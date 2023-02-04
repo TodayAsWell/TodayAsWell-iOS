@@ -2,10 +2,13 @@ import UIKit
 import Then
 import SnapKit
 import GPUImage
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
     private lazy var renderView = RenderView()
+    private lazy var shootButton = UIButton()
     var camera:Camera!
 
     var isFrontCamera = false
@@ -15,6 +18,8 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         setCameraUIAndFilters()
+        
+        shootButton.setBackgroundImage(UIImage(named: "cam_snap_butt_highlighted"), for: .highlighted)
     }
     
     
@@ -89,12 +94,34 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        
         view.addSubview(renderView)
+        view.addSubview(shootButton)
+        
         renderView.snp.makeConstraints {
-            $0.height.equalToSuperview()
-            $0.width.equalToSuperview()
+            $0.height.width.equalTo(430.0)
             $0.centerX.centerY.equalToSuperview()
+        }
+        
+        shootButton.snp.makeConstraints {
+            $0.top.equalTo(renderView.snp.bottom).offset(51.0)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(100.0)
+        }
+        
+        shootButton.rx.tap
+            .bind {
+                self.shootButtonDidTap()
+            }
+    }
+    
+    
+    func shootButtonDidTap() {
+        playSound("button_click", ofType: "wav")
+        do {
+            sharedImageProcessingContext.runOperationSynchronously{
+                camera.stopCapture()
+                camera.removeAllTargets()
+            }
         }
     }
 }
