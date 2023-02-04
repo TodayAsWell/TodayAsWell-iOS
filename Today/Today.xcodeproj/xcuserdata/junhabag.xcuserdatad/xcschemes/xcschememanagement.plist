@@ -12,7 +12,25 @@
 		<key>Today.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0E34B80A298E56A9005D3F67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0E34B823298E56AA005D3F67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0E34B82D298E56AA005D3F67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
