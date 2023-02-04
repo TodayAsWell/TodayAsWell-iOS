@@ -158,6 +158,77 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0EA0A548298E8ED200652588 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0EA0A54F298E90D500652588 /* Additions */,
+				0EA0A54E298E8F7D00652588 /* ViewControllers */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0EA0A549298E8F1500652588 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0EA0A54A298E8F1B00652588 /* Storyboard */,
+				0EA0A54B298E8F2600652588 /* Supporting Files */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0EA0A54A298E8F1B00652588 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				263C158D233A1F5F00675CFF /* Launch Screen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		0EA0A54B298E8F2600652588 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2650ECCD2281AC5700FD4FA0 /* Sounds */,
+				0EA0A54C298E8F3400652588 /* Lottie */,
+				0EA0A54D298E8F4800652588 /* Font */,
+				722FE59F19FFD91800BA05A1 /* AppDelegate.swift */,
+				0EA0A538298E6E7A00652588 /* SceneDelegate.swift */,
+				722FE5A619FFD91900BA05A1 /* Assets.xcassets */,
+				722FE59E19FFD91800BA05A1 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EA0A54C298E8F3400652588 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		0EA0A54D298E8F4800652588 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2673572722840F9A00AE565B /* Jetta_Kloots_Font.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		0EA0A54E298E8F7D00652588 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0EA0A53A298E6E8A00652588 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0EA0A54F298E90D500652588 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				0EA0A53F298E7EE300652588 /* Configurations.swift */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
 		2650ECCD2281AC5700FD4FA0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,15 +270,8 @@
 		722FE59C19FFD91800BA05A1 /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				722FE59F19FFD91800BA05A1 /* AppDelegate.swift */,
-				0EA0A538298E6E7A00652588 /* SceneDelegate.swift */,
-				0EA0A53A298E6E8A00652588 /* ViewController.swift */,
-				0EA0A53F298E7EE300652588 /* Configurations.swift */,
-				722FE5A619FFD91900BA05A1 /* Assets.xcassets */,
-				263C158D233A1F5F00675CFF /* Launch Screen.storyboard */,
-				2650ECCD2281AC5700FD4FA0 /* Sounds */,
-				722FE59E19FFD91800BA05A1 /* Info.plist */,
-				2673572722840F9A00AE565B /* Jetta_Kloots_Font.ttf */,
+				0EA0A549298E8F1500652588 /* Resource */,
+				0EA0A548298E8ED200652588 /* Source */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -546,7 +610,7 @@
 				DEVELOPMENT_TEAM = 92YDTRVDUA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = /Users/junha/Desktop/Today_iOS/Today/Info.plist;
+				INFOPLIST_FILE = "/Users/junha/Desktop/Today_iOS/Today/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
@@ -569,7 +633,7 @@
 				DEVELOPMENT_TEAM = 92YDTRVDUA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = /Users/junha/Desktop/Today_iOS/Today/Info.plist;
+				INFOPLIST_FILE = "/Users/junha/Desktop/Today_iOS/Today/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";

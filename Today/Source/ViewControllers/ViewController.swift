@@ -15,15 +15,7 @@ class ViewController: UIViewController {
     
     private lazy var renderView = RenderView()
     var camera:Camera!
-    
-//    private lazy var comeingSoon = UILabel().then {
-//        $0.font = .systemFont(ofSize: 24.0, weight: .bold)
-//        $0.text = "곧 돌아오겠습니다"
-//        $0.textColor = .black
-//    }
-    
-    var imgToShare = UIImage()
-    var isFlashON = false
+
     var isFrontCamera = false
     
     
