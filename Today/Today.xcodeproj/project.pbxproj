@@ -16,6 +16,22 @@
 		0E5851D9298E3C6D007CA90A /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5851D8298E3C6D007CA90A /* TodayTests.swift */; };
 		0E5851E3298E3C6D007CA90A /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5851E2298E3C6D007CA90A /* TodayUITests.swift */; };
 		0E5851E5298E3C6D007CA90A /* TodayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5851E4298E3C6D007CA90A /* TodayUITestsLaunchTests.swift */; };
+		0E5851F4298E413C007CA90A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851F3298E413C007CA90A /* OpenGLES.framework */; };
+		0E5851F6298E4170007CA90A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851F5298E4170007CA90A /* CoreVideo.framework */; };
+		0E5851F8298E417D007CA90A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851F7298E417D007CA90A /* SystemConfiguration.framework */; };
+		0E5851FB298E418B007CA90A /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851F9298E418B007CA90A /* EventKitUI.framework */; };
+		0E5851FC298E418B007CA90A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851FA298E418B007CA90A /* EventKit.framework */; };
+		0E5851FE298E419D007CA90A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851FD298E419D007CA90A /* CoreTelephony.framework */; };
+		0E585200298E41A7007CA90A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5851FF298E41A7007CA90A /* StoreKit.framework */; };
+		0E585202298E41BC007CA90A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E585201298E41BC007CA90A /* CoreMedia.framework */; };
+		0E585204298E41C5007CA90A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E585203298E41C5007CA90A /* CoreGraphics.framework */; };
+		0E585206298E41D7007CA90A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E585205298E41D7007CA90A /* AVFoundation.framework */; };
+		0E585208298E41E5007CA90A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E585207298E41E5007CA90A /* AudioToolbox.framework */; };
+		0E58520A298E41F1007CA90A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E585209298E41F0007CA90A /* AdSupport.framework */; };
+		0E58520C298E41FF007CA90A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E58520B298E41FF007CA90A /* MessageUI.framework */; };
+		0E58520E298E4208007CA90A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E58520D298E4208007CA90A /* Social.framework */; };
+		0E585210298E421E007CA90A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E58520F298E421E007CA90A /* QuartzCore.framework */; };
+		0E585212298E4233007CA90A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E585211298E4233007CA90A /* CoreImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +65,22 @@
 		0E5851DE298E3C6D007CA90A /* TodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5851E2298E3C6D007CA90A /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
 		0E5851E4298E3C6D007CA90A /* TodayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0E5851F3298E413C007CA90A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		0E5851F5298E4170007CA90A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		0E5851F7298E417D007CA90A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0E5851F9298E418B007CA90A /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		0E5851FA298E418B007CA90A /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		0E5851FD298E419D007CA90A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0E5851FF298E41A7007CA90A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0E585201298E41BC007CA90A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0E585203298E41C5007CA90A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0E585205298E41D7007CA90A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0E585207298E41E5007CA90A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0E585209298E41F0007CA90A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		0E58520B298E41FF007CA90A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		0E58520D298E4208007CA90A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		0E58520F298E421E007CA90A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0E585211298E4233007CA90A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +88,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E585212298E4233007CA90A /* CoreImage.framework in Frameworks */,
+				0E585210298E421E007CA90A /* QuartzCore.framework in Frameworks */,
+				0E58520E298E4208007CA90A /* Social.framework in Frameworks */,
+				0E58520C298E41FF007CA90A /* MessageUI.framework in Frameworks */,
+				0E58520A298E41F1007CA90A /* AdSupport.framework in Frameworks */,
+				0E585208298E41E5007CA90A /* AudioToolbox.framework in Frameworks */,
+				0E585206298E41D7007CA90A /* AVFoundation.framework in Frameworks */,
+				0E585204298E41C5007CA90A /* CoreGraphics.framework in Frameworks */,
+				0E585202298E41BC007CA90A /* CoreMedia.framework in Frameworks */,
+				0E585200298E41A7007CA90A /* StoreKit.framework in Frameworks */,
+				0E5851FE298E419D007CA90A /* CoreTelephony.framework in Frameworks */,
+				0E5851FB298E418B007CA90A /* EventKitUI.framework in Frameworks */,
+				0E5851FC298E418B007CA90A /* EventKit.framework in Frameworks */,
+				0E5851F8298E417D007CA90A /* SystemConfiguration.framework in Frameworks */,
+				0E5851F6298E4170007CA90A /* CoreVideo.framework in Frameworks */,
+				0E5851F4298E413C007CA90A /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +131,7 @@
 				0E5851D7298E3C6D007CA90A /* TodayTests */,
 				0E5851E1298E3C6D007CA90A /* TodayUITests */,
 				0E5851BC298E3C6C007CA90A /* Products */,
+				0E5851F2298E413C007CA90A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +174,29 @@
 				0E5851E4298E3C6D007CA90A /* TodayUITestsLaunchTests.swift */,
 			);
 			path = TodayUITests;
+			sourceTree = "<group>";
+		};
+		0E5851F2298E413C007CA90A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E585211298E4233007CA90A /* CoreImage.framework */,
+				0E58520F298E421E007CA90A /* QuartzCore.framework */,
+				0E58520D298E4208007CA90A /* Social.framework */,
+				0E58520B298E41FF007CA90A /* MessageUI.framework */,
+				0E585209298E41F0007CA90A /* AdSupport.framework */,
+				0E585207298E41E5007CA90A /* AudioToolbox.framework */,
+				0E585205298E41D7007CA90A /* AVFoundation.framework */,
+				0E585203298E41C5007CA90A /* CoreGraphics.framework */,
+				0E585201298E41BC007CA90A /* CoreMedia.framework */,
+				0E5851FF298E41A7007CA90A /* StoreKit.framework */,
+				0E5851FD298E419D007CA90A /* CoreTelephony.framework */,
+				0E5851FA298E418B007CA90A /* EventKit.framework */,
+				0E5851F9298E418B007CA90A /* EventKitUI.framework */,
+				0E5851F7298E417D007CA90A /* SystemConfiguration.framework */,
+				0E5851F5298E4170007CA90A /* CoreVideo.framework */,
+				0E5851F3298E413C007CA90A /* OpenGLES.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
