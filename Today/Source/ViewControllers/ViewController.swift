@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Today
-//
-//  Created by 박준하 on 2023/02/04.
-//  Copyright © 2023 XScoder. All rights reserved.
-//
-
 import UIKit
 import Then
 import SnapKit
