@@ -5,7 +5,8 @@ import GPUImage
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+@available(iOS 13.0, *)
+class ViewController: BaseVC {
     
     private lazy var renderView = RenderView()
     private lazy var shootButton = UIButton()
@@ -13,87 +14,22 @@ class ViewController: UIViewController {
 
     var isFrontCamera = false
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func attribute() {
         setCameraUIAndFilters()
         
         shootButton.setBackgroundImage(UIImage(named: "cam_snap_butt_highlighted"), for: .highlighted)
-    }
-    
-    
-      // ------------------------------------------------
-      // MARK: - SET CAMERA & FILTERS
-      // ------------------------------------------------
-      func setCameraUIAndFilters() {
-          print("CAMERA IN USE: \(cameraInUse)")
-          
-          // 필터 사용 않하는 거 모음
-          saturationFlt.removeAllTargets()
-          contrastFlt.removeAllTargets()
-          exposureFlt.removeAllTargets()
-          brightnessFlt.removeAllTargets()
-          whiteBalanceFlt.removeAllTargets()
-          rgbaAdjustmentFlt.removeAllTargets()
-          blendFlt.removeAllTargets()
-          pixelllateFlt.removeAllTargets()
-          halftoneFlt.removeAllTargets()
-          crossHatchFlt.removeAllTargets()
-          vignetteFlt.removeAllTargets()
-          toonFlt.removeAllTargets()
-          luminanceFlt.removeAllTargets()
-          luminanceThresholdFlt.removeAllTargets()
-          colorInversionFlt.removeAllTargets()
-          monochromeFlt.removeAllTargets()
-          falseColorFlt.removeAllTargets()
-          hazeFlt.removeAllTargets()
-          sepiaFlt.removeAllTargets()
-          opacityFlt.removeAllTargets()
-          hueFlt.removeAllTargets()
-          swirlFlt.removeAllTargets()
-          gaussianBlurFlt.removeAllTargets()
-          tiltShiftFlt.removeAllTargets()
-          highlightsAndShadowsFlt.removeAllTargets()
-          solarizeFlt.removeAllTargets()
-          cgaColorspaceFlt.removeAllTargets()
-          prewittEdgeDetectionFlt.removeAllTargets()
-          sketchFlt.removeAllTargets()
-          thresholdSketchFlt.removeAllTargets()
-          kuwaharaFlt.removeAllTargets()
-
-          
-          // Initialize Camera
-          do {
-              if !isFrontCamera {
-                  camera = try Camera(sessionPreset: .photo, location: .backFacing)
-                  camera.delegate = self as? CameraDelegate
-              } else {
-                  camera = try Camera(sessionPreset: .photo, location: .frontFacing)
-                  camera.delegate = self as? CameraDelegate
-              }
-                            
-              switch cameraInUse {
-                  
-              case 0:
-                  camera --> renderView
-              break
-                  
-              default:break
-                  
-              }
-              
-              camera.startCapture()
-              
-          } catch { fatalError("Could not initialize the Camera: \(error)") }
-      }
-      
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+    }
+    
+    override func touchEvent() {
+        shootButton.rx.tap
+            .bind {
+                self.shootButtonDidTap()
+            }.disposed(by: disposeBag)
+    }
+    
+    override func layout() {
         view.addSubview(renderView)
         view.addSubview(shootButton)
         
@@ -107,11 +43,68 @@ class ViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(100.0)
         }
+    }
+    
+    func setCameraUIAndFilters() {
+        print("CAMERA IN USE: \(cameraInUse)")
         
-        shootButton.rx.tap
-            .bind {
-                self.shootButtonDidTap()
+        // 필터 사용 않하는 거 모음
+        saturationFlt.removeAllTargets()
+        contrastFlt.removeAllTargets()
+        exposureFlt.removeAllTargets()
+        brightnessFlt.removeAllTargets()
+        whiteBalanceFlt.removeAllTargets()
+        rgbaAdjustmentFlt.removeAllTargets()
+        blendFlt.removeAllTargets()
+        pixelllateFlt.removeAllTargets()
+        halftoneFlt.removeAllTargets()
+        crossHatchFlt.removeAllTargets()
+        vignetteFlt.removeAllTargets()
+        toonFlt.removeAllTargets()
+        luminanceFlt.removeAllTargets()
+        luminanceThresholdFlt.removeAllTargets()
+        colorInversionFlt.removeAllTargets()
+        monochromeFlt.removeAllTargets()
+        falseColorFlt.removeAllTargets()
+        hazeFlt.removeAllTargets()
+        sepiaFlt.removeAllTargets()
+        opacityFlt.removeAllTargets()
+        hueFlt.removeAllTargets()
+        swirlFlt.removeAllTargets()
+        gaussianBlurFlt.removeAllTargets()
+        tiltShiftFlt.removeAllTargets()
+        highlightsAndShadowsFlt.removeAllTargets()
+        solarizeFlt.removeAllTargets()
+        cgaColorspaceFlt.removeAllTargets()
+        prewittEdgeDetectionFlt.removeAllTargets()
+        sketchFlt.removeAllTargets()
+        thresholdSketchFlt.removeAllTargets()
+        kuwaharaFlt.removeAllTargets()
+
+        
+        // 카메라 초기화
+        do {
+            if !isFrontCamera {
+                camera = try Camera(sessionPreset: .photo, location: .backFacing)
+                camera.delegate = self as? CameraDelegate
+            } else {
+                camera = try Camera(sessionPreset: .photo, location: .frontFacing)
+                camera.delegate = self as? CameraDelegate
             }
+                          
+            switch cameraInUse {
+                
+            case 0:
+                camera --> renderView
+            break
+                
+            default:break
+                
+            }
+            
+            camera.startCapture()
+            
+        } catch { fatalError("Could not initialize the Camera: \(error)") }
     }
     
     
