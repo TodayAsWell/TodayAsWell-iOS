@@ -13,14 +13,35 @@ class MainViewController: BaseVC {
     private lazy var renderView = RenderView()
     private lazy var shootButton = UIButton()
     private lazy var flashButton = UIButton()
+    private lazy var previewButton = UIButton()
+    private var previewImg = UIImageView()
+    var imgInFrame = UIImageView()
+    private var whiteFadingImg = UIImageView()
+    var viewWithFrame = UIView()
+    var camNameLabel: UILabel!
     
     var camera:Camera!
 
+    var imgToShare = UIImage()
     var isFlashON = false
     var isFrontCamera = false
     
     override func attribute() {
         setCameraUIAndFilters()
+        
+//        let camStrArray = listOfCameras[cameraInUse].components(separatedBy: "__")
+//        camNameLabel.text = camStrArray[0]
+        
+        // Camera BKG color
+        view.backgroundColor = cameraColors[cameraInUse]
+        
+        whiteFadingImg.layer.cornerRadius = previewImg.bounds.size.width/2
+        whiteFadingImg.layer.borderColor = UIColor.black.cgColor
+        whiteFadingImg.layer.borderWidth = 6
+        
+        previewImg.layer.cornerRadius = previewImg.bounds.size.width/2
+        previewImg.layer.borderColor = UIColor.black.cgColor
+        previewImg.layer.borderWidth = 6
         
         shootButton.backgroundColor = .red
         
@@ -29,17 +50,27 @@ class MainViewController: BaseVC {
         view.backgroundColor = .white
         
         flashButton.backgroundColor = .blue
+        imgInFrame.backgroundColor = .clear
+        previewButton.backgroundColor = .clear
+        
+        viewWithFrame.frame.origin.y = view.frame.size.height
     }
     
     override func touchEvent() {
         shootButton.rx.tap
             .bind {
-                self.shootButtonDidTap()
+                self.shootPictureButtonDidTap()
             }.disposed(by: disposeBag)
         
         flashButton.rx.tap
             .bind {
                 self.flashButtonDidTap()
+            }.disposed(by: disposeBag)
+        
+        previewButton.rx.tap
+            .bind {
+                self.shareLstPhotoButt()
+                print("previewButton 호출")
             }.disposed(by: disposeBag)
     }
     
@@ -47,6 +78,8 @@ class MainViewController: BaseVC {
         view.addSubview(renderView)
         view.addSubview(shootButton)
         view.addSubview(flashButton)
+        [previewImg, imgInFrame].forEach { view.addSubview($0) }
+        view.addSubview(previewButton)
         
         renderView.snp.makeConstraints {
             $0.height.width.equalTo(430.0)
@@ -64,8 +97,27 @@ class MainViewController: BaseVC {
             $0.leading.equalToSuperview().offset(30.0)
             $0.width.height.equalTo(60.0)
         }
+        
+        previewImg.snp.makeConstraints {
+            $0.top.equalTo(flashButton.snp.top)
+            $0.trailing.equalToSuperview().inset(30.0)
+            $0.width.height.equalTo(flashButton.snp.width)
+        }
+//
+        imgInFrame.snp.makeConstraints {
+            $0.top.equalTo(previewImg.snp.top)
+            $0.trailing.equalTo(previewImg.snp.trailing)
+            $0.width.height.equalTo(previewImg.snp.width)
+        }
+
+        previewButton.snp.makeConstraints {
+            $0.top.equalTo(imgInFrame.snp.top)
+            $0.trailing.equalTo(imgInFrame.snp.trailing)
+            $0.width.height.equalTo(imgInFrame.snp.width)
+        }
     }
     
+    //필터를 사용할거 넣는 함수
     func setCameraUIAndFilters() {
         print("CAMERA IN USE: \(cameraInUse)")
         
@@ -102,7 +154,6 @@ class MainViewController: BaseVC {
         thresholdSketchFlt.removeAllTargets()
         kuwaharaFlt.removeAllTargets()
 
-        
         // 카메라 초기화
         do {
             if !isFrontCamera {
@@ -128,17 +179,7 @@ class MainViewController: BaseVC {
         } catch { fatalError("Could not initialize the Camera: \(error)") }
     }
     
-    
-    func shootButtonDidTap() {
-        playSound("button_click", ofType: "wav")
-        do {
-            sharedImageProcessingContext.runOperationSynchronously{
-                camera.stopCapture()
-                camera.removeAllTargets()
-            }
-        }
-    }
-    
+    //후레시 버튼 클릭 했을 때
     func flashButtonDidTap() {
         if !isFrontCamera {
             playSound("flash", ofType: "wav")
@@ -169,4 +210,59 @@ class MainViewController: BaseVC {
             }
         }
     }
+    
+    //
+    func shootPictureButtonDidTap() {
+
+        AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
+        
+        UIGraphicsBeginImageContextWithOptions(renderView.bounds.size, false, 0)
+        renderView.drawHierarchy(in: renderView.bounds, afterScreenUpdates: true)
+        takenImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        previewImg.image = takenImage
+        imgInFrame.image = takenImage
+//        saveImageWithFrame()
+        
+        shootButton.isEnabled = false
+        whiteFadingImg.alpha = 1
+        
+        UIView.animate(withDuration: 2.0, delay: 1.5, options: .curveLinear, animations: {
+            self.playSound("roll_picture", ofType: "wav")
+            self.whiteFadingImg.alpha = 0
+            
+        }, completion: { (finished: Bool) in
+            self.shootButton.isEnabled = true
+        })
+    }
+    
+//    func saveImageWithFrame() {
+//        UIGraphicsBeginImageContextWithOptions(viewWithFrame.bounds.size, false, 0)
+//        viewWithFrame.drawHierarchy(in: viewWithFrame.bounds, afterScreenUpdates: true)
+//        imgToShare = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//
+//        // Save photo into a custom folder in the Camera Roll
+//        savePhoto(image: imgToShare, albumName: APP_NAME, completion: nil)
+//    }
+    
+    
+    func shareLstPhotoButt() {
+        if previewImg.image != nil {
+            playSound("button_click", ofType: "wav")
+            do {
+                sharedImageProcessingContext.runOperationSynchronously{
+                    camera.stopCapture()
+                    camera.removeAllTargets()
+                }
+                
+                let vc = ImageViewController()
+//                vc.theImgToShare = imgToShare
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+    
 }
