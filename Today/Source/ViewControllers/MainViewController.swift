@@ -4,22 +4,31 @@ import SnapKit
 import GPUImage
 import RxSwift
 import RxCocoa
+import AVFoundation
+
 
 @available(iOS 13.0, *)
-class ViewController: BaseVC {
+class MainViewController: BaseVC {
     
     private lazy var renderView = RenderView()
     private lazy var shootButton = UIButton()
+    private lazy var flashButton = UIButton()
+    
     var camera:Camera!
 
+    var isFlashON = false
     var isFrontCamera = false
     
     override func attribute() {
         setCameraUIAndFilters()
         
+        shootButton.backgroundColor = .red
+        
         shootButton.setBackgroundImage(UIImage(named: "cam_snap_butt_highlighted"), for: .highlighted)
         
         view.backgroundColor = .white
+        
+        flashButton.backgroundColor = .blue
     }
     
     override func touchEvent() {
@@ -27,11 +36,17 @@ class ViewController: BaseVC {
             .bind {
                 self.shootButtonDidTap()
             }.disposed(by: disposeBag)
+        
+        flashButton.rx.tap
+            .bind {
+                self.flashButtonDidTap()
+            }.disposed(by: disposeBag)
     }
     
     override func layout() {
         view.addSubview(renderView)
         view.addSubview(shootButton)
+        view.addSubview(flashButton)
         
         renderView.snp.makeConstraints {
             $0.height.width.equalTo(430.0)
@@ -42,6 +57,12 @@ class ViewController: BaseVC {
             $0.top.equalTo(renderView.snp.bottom).offset(51.0)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(100.0)
+        }
+        
+        flashButton.snp.makeConstraints {
+            $0.top.equalTo(renderView.snp.bottom).offset(71.0)
+            $0.leading.equalToSuperview().offset(30.0)
+            $0.width.height.equalTo(60.0)
         }
     }
     
@@ -114,6 +135,37 @@ class ViewController: BaseVC {
             sharedImageProcessingContext.runOperationSynchronously{
                 camera.stopCapture()
                 camera.removeAllTargets()
+            }
+        }
+    }
+    
+    func flashButtonDidTap() {
+        if !isFrontCamera {
+            playSound("flash", ofType: "wav")
+            
+            isFlashON = !isFlashON
+            print("플래시는 \(isFlashON) 상태입니다")
+            
+            if isFlashON {
+                flashButton.setBackgroundImage(UIImage(named: "cam_flash_on"), for: .normal)
+                do {
+                    try camera.inputCamera.lockForConfiguration()
+                    camera.inputCamera.torchMode = .off
+                    camera.inputCamera.unlockForConfiguration()
+                    print("플래시가 켜졌습니다")
+                } catch {
+                    print("\(error)")
+                }
+            } else {
+                flashButton.setBackgroundImage(UIImage(named: "cam_flash_off"), for: .normal)
+                do {
+                    try camera.inputCamera.lockForConfiguration()
+                    camera.inputCamera.torchMode = .off
+                    camera.inputCamera.unlockForConfiguration()
+                    print("플래시가 꺼졌습니닦")
+                } catch {
+                    print("\(error)")
+                }
             }
         }
     }

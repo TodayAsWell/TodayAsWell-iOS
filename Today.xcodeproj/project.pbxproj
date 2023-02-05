@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A538298E6E7A00652588 /* SceneDelegate.swift */; };
-		0EA0A53B298E6E8A00652588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A53A298E6E8A00652588 /* ViewController.swift */; };
+		0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A53A298E6E8A00652588 /* MainViewController.swift */; };
 		0EA0A540298E7EE300652588 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A53F298E7EE300652588 /* Configurations.swift */; };
 		0EA0A557298EA61900652588 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A556298EA61900652588 /* BaseVC.swift */; };
 		2632D15B22788D100027AAB9 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 26D9AB63227747FA00403289 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -85,7 +85,7 @@
 
 /* Begin PBXFileReference section */
 		0EA0A538298E6E7A00652588 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0EA0A53A298E6E8A00652588 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0EA0A53A298E6E8A00652588 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0EA0A53F298E7EE300652588 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		0EA0A556298EA61900652588 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		1FAD97705683A226C7341926 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		0EA0A54E298E8F7D00652588 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0EA0A53A298E6E8A00652588 /* ViewController.swift */,
+				0EA0A53A298E6E8A00652588 /* MainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 				0EA0A557298EA61900652588 /* BaseVC.swift in Sources */,
 				0EA0A540298E7EE300652588 /* Configurations.swift in Sources */,
 				2673572E2284360B00AE565B /* GPUImage.xcodeproj in Sources */,
-				0EA0A53B298E6E8A00652588 /* ViewController.swift in Sources */,
+				0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */,
 				0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
