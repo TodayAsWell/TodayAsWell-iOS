@@ -26,6 +26,11 @@ class MainViewController: BaseVC {
     var isFlashON = false
     var isFrontCamera = false
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func attribute() {
         setCameraUIAndFilters()
         
@@ -82,18 +87,20 @@ class MainViewController: BaseVC {
         view.addSubview(previewButton)
         
         renderView.snp.makeConstraints {
-            $0.height.width.equalTo(430.0)
-            $0.centerX.centerY.equalToSuperview()
+            $0.height.equalTo(330)
+            $0.width.equalTo(330.0)
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(150)
         }
         
         shootButton.snp.makeConstraints {
-            $0.top.equalTo(renderView.snp.bottom).offset(51.0)
+            $0.top.equalTo(renderView.snp.bottom).offset(200.0)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(100.0)
         }
         
         flashButton.snp.makeConstraints {
-            $0.top.equalTo(renderView.snp.bottom).offset(71.0)
+            $0.centerY.equalTo(shootButton.snp.centerY)
             $0.leading.equalToSuperview().offset(30.0)
             $0.width.height.equalTo(60.0)
         }
@@ -182,7 +189,7 @@ class MainViewController: BaseVC {
     //후레시 버튼 클릭 했을 때
     func flashButtonDidTap() {
         if !isFrontCamera {
-            playSound("flash", ofType: "wav")
+//            playSound("flash", ofType: "wav")
             
             isFlashON = !isFlashON
             print("플래시는 \(isFlashON) 상태입니다")
@@ -214,7 +221,7 @@ class MainViewController: BaseVC {
     //
     func shootPictureButtonDidTap() {
 
-        AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
+//        AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
         
         UIGraphicsBeginImageContextWithOptions(renderView.bounds.size, false, 0)
         renderView.drawHierarchy(in: renderView.bounds, afterScreenUpdates: true)
@@ -229,7 +236,7 @@ class MainViewController: BaseVC {
         whiteFadingImg.alpha = 1
         
         UIView.animate(withDuration: 2.0, delay: 1.5, options: .curveLinear, animations: {
-            self.playSound("roll_picture", ofType: "wav")
+//            self.playSound("roll_picture", ofType: "wav")
             self.whiteFadingImg.alpha = 0
             
         }, completion: { (finished: Bool) in
@@ -250,7 +257,7 @@ class MainViewController: BaseVC {
     
     func shareLstPhotoButt() {
         if previewImg.image != nil {
-            playSound("button_click", ofType: "wav")
+//            playSound("button_click", ofType: "wav")
             do {
                 sharedImageProcessingContext.runOperationSynchronously{
                     camera.stopCapture()
