@@ -54,10 +54,12 @@ class MainViewController: BaseVC {
         setCameraUIAndFilters()
         
 //        let camStrArray = listOfCameras[cameraInUse].components(separatedBy: "__")
-//        camNameLabel.text = camStrArray[0]
+//        camNameLabel.text = camStrArray[1]
+//        
+//        view.backgroundColor = cameraColors[cameraInUse]
         
-        // Camera BKG color
-        view.backgroundColor = cameraColors[cameraInUse]
+//        let camStrArray = listOfCameras[cameraInUse].components(separatedBy: "__")
+//        camNameLabel.text = camStrArray[0]
         
         whiteFadingImg.layer.cornerRadius = previewImg.bounds.size.width/2
         whiteFadingImg.layer.borderColor = UIColor.black.cgColor
