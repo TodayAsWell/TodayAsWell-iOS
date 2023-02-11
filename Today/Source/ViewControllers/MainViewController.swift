@@ -11,11 +11,18 @@ import AVFoundation
 class MainViewController: BaseVC {
     
     private lazy var renderView = RenderView()
-    private lazy var shootButton = UIButton()
+    
     private lazy var flashButton = UIButton()
+    
+    private lazy var shootButton = UIButton()
+    
     private lazy var previewButton = UIButton()
     private var previewImg = UIImageView()
     var imgInFrame = UIImageView()
+    
+    var filterButton = UIButton()
+    
+    
     private var whiteFadingImg = UIImageView()
     var viewWithFrame = UIView()
     var camNameLabel: UILabel!
@@ -52,13 +59,14 @@ class MainViewController: BaseVC {
         flashButton.backgroundColor = .blue
         imgInFrame.backgroundColor = .clear
         previewButton.backgroundColor = .clear
+        filterButton.backgroundColor = .orange
         
         viewWithFrame.frame.origin.y = view.frame.size.height
     }
     
     override func touchEvent() {
         
-        view.backgroundColor = .black
+        view.backgroundColor = .red
         
         shootButton.rx.tap
             .bind {
@@ -75,6 +83,11 @@ class MainViewController: BaseVC {
                 self.shareLstPhotoButt()
                 print("previewButton 호출")
             }.disposed(by: disposeBag)
+        
+        filterButton.rx.tap
+            .bind {
+                print("filterButton 클릭됨")
+            }
     }
     
     override func layout() {
@@ -83,32 +96,27 @@ class MainViewController: BaseVC {
         view.addSubview(flashButton)
         [previewImg, imgInFrame].forEach { view.addSubview($0) }
         view.addSubview(previewButton)
+        view.addSubview(filterButton)
         
         renderView.snp.makeConstraints {
             $0.height.equalTo(330)
             $0.width.equalTo(330.0)
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(150)
+            $0.top.equalToSuperview().offset(190)
         }
         
         shootButton.snp.makeConstraints {
-            $0.top.equalTo(renderView.snp.bottom).offset(200.0)
+            $0.top.equalTo(renderView.snp.bottom).offset(110.0)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(100.0)
         }
         
-        flashButton.snp.makeConstraints {
+        previewImg.snp.makeConstraints {
             $0.centerY.equalTo(shootButton.snp.centerY)
             $0.leading.equalToSuperview().offset(30.0)
             $0.width.height.equalTo(60.0)
         }
-        
-        previewImg.snp.makeConstraints {
-            $0.top.equalTo(flashButton.snp.top)
-            $0.trailing.equalToSuperview().inset(30.0)
-            $0.width.height.equalTo(flashButton.snp.width)
-        }
-//
+
         imgInFrame.snp.makeConstraints {
             $0.top.equalTo(previewImg.snp.top)
             $0.trailing.equalTo(previewImg.snp.trailing)
@@ -119,6 +127,12 @@ class MainViewController: BaseVC {
             $0.top.equalTo(imgInFrame.snp.top)
             $0.trailing.equalTo(imgInFrame.snp.trailing)
             $0.width.height.equalTo(imgInFrame.snp.width)
+        }
+        
+        filterButton.snp.makeConstraints {
+            $0.top.equalTo(previewImg.snp.top)
+            $0.trailing.equalToSuperview().inset(30.0)
+            $0.width.height.equalTo(previewImg.snp.width)
         }
     }
     
