@@ -26,7 +26,7 @@ class MainViewController: BaseVC {
     private lazy var flashButton = UIButton().then {
         $0.backgroundColor = .blue
     }
-    private lazy var screenTransitionButton = UIButton().then {
+    private lazy var swicthScreenButton = UIButton().then {
         let systemImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
         $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
     }
@@ -125,8 +125,9 @@ class MainViewController: BaseVC {
                 print("flashButton tap")
             }.disposed(by: disposeBag)
         
-        screenTransitionButton.rx.tap
+        swicthScreenButton.rx.tap
             .bind {
+                self.swicthScreenButtonDidTap()
                 print("screenTransitionButton tap")
             }.disposed(by: disposeBag)
     }
@@ -143,7 +144,7 @@ class MainViewController: BaseVC {
             pendingButton,
             timerButton,
             flashButton,
-            screenTransitionButton
+            swicthScreenButton
             
         ].forEach { view.addSubview($0) }
         
@@ -181,7 +182,7 @@ class MainViewController: BaseVC {
             $0.centerX.equalTo(timerButton.snp.centerX).offset(smallButtonSpacing)
         }
         
-        screenTransitionButton.snp.makeConstraints {
+        swicthScreenButton.snp.makeConstraints {
             $0.top.equalTo(flashButton.snp.top)
             $0.width.height.equalTo(flashButton.snp.width)
             $0.centerX.equalTo(flashButton.snp.centerX).offset(smallButtonSpacing)
@@ -367,4 +368,44 @@ class MainViewController: BaseVC {
         }
     }
     
+    func swicthScreenButtonDidTap() {
+        playSound("button_click", ofType: "wav")
+        
+        isFrontCamera = !isFrontCamera
+        print("IS FRONT CAMERA: \(isFrontCamera)")
+        
+        // Front Camera
+        if isFrontCamera {
+            swicthScreenButton.setBackgroundImage(UIImage(systemName: "arrow.triangle.2.circlepath.camera.fill"), for: .normal)
+            
+            // Disable flash
+            if isFlashON {
+                isFlashON = false
+                flashButton.setBackgroundImage(UIImage(named: "cam_flash_off"), for: .normal)
+                do {
+                    try camera.inputCamera.lockForConfiguration()
+                    camera.inputCamera.torchMode = .off
+                    camera.inputCamera.unlockForConfiguration()
+                } catch { print("\(error)") }
+            }
+            
+            resetCameraAndStartItAgain()
+            
+        
+        // Back Camera
+        } else {
+            swicthScreenButton.setBackgroundImage(UIImage(systemName: "arrow.triangle.2.circlepath.camera"), for: .normal)
+            resetCameraAndStartItAgain()
+        }
+    }
+    
+    func resetCameraAndStartItAgain() {
+        do {
+            sharedImageProcessingContext.runOperationAsynchronously {
+                self.camera.stopCapture()
+                self.camera.removeAllTargets()
+                self.setCameraUIAndFilters()
+            }
+        }
+    }
 }
