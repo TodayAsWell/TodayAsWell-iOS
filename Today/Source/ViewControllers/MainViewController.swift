@@ -26,11 +26,6 @@ class MainViewController: BaseVC {
     var isFlashON = false
     var isFrontCamera = false
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     override func attribute() {
         setCameraUIAndFilters()
         
@@ -48,9 +43,9 @@ class MainViewController: BaseVC {
         previewImg.layer.borderColor = UIColor.black.cgColor
         previewImg.layer.borderWidth = 6
         
-        shootButton.backgroundColor = .red
+//        shootButton.backgroundColor = .red
         
-        shootButton.setBackgroundImage(UIImage(named: "cam_snap_butt_highlighted"), for: .highlighted)
+        shootButton.setBackgroundImage(UIImage(named: "PhotoButtonOff"), for: .normal)
         
         view.backgroundColor = .white
         
@@ -62,6 +57,9 @@ class MainViewController: BaseVC {
     }
     
     override func touchEvent() {
+        
+        view.backgroundColor = .black
+        
         shootButton.rx.tap
             .bind {
                 self.shootPictureButtonDidTap()
