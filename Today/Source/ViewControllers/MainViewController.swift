@@ -31,7 +31,9 @@ class MainViewController: BaseVC {
         $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
     }
     
-    private lazy var shootButton = UIButton()
+    private lazy var shootButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "PhotoButtonOff"), for: .normal)
+    }
     
     private lazy var previewButton = UIButton()
     private var previewImg = UIImageView()
@@ -55,11 +57,8 @@ class MainViewController: BaseVC {
         
 //        let camStrArray = listOfCameras[cameraInUse].components(separatedBy: "__")
 //        camNameLabel.text = camStrArray[1]
-//        
+//
 //        view.backgroundColor = cameraColors[cameraInUse]
-        
-//        let camStrArray = listOfCameras[cameraInUse].components(separatedBy: "__")
-//        camNameLabel.text = camStrArray[0]
         
         whiteFadingImg.layer.cornerRadius = previewImg.bounds.size.width/2
         whiteFadingImg.layer.borderColor = UIColor.black.cgColor
@@ -68,12 +67,6 @@ class MainViewController: BaseVC {
         previewImg.layer.cornerRadius = previewImg.bounds.size.width/2
         previewImg.layer.borderColor = UIColor.black.cgColor
         previewImg.layer.borderWidth = 6
-        
-//        shootButton.backgroundColor = .red
-        
-        shootButton.setBackgroundImage(UIImage(named: "PhotoButtonOff"), for: .normal)
-        
-        view.backgroundColor = .white
         
         imgInFrame.backgroundColor = .clear
         previewButton.backgroundColor = .clear
@@ -84,7 +77,7 @@ class MainViewController: BaseVC {
     
     override func touchEvent() {
         
-        view.backgroundColor = .red
+        view.backgroundColor = .black
         
         shootButton.rx.tap
             .bind {
@@ -159,7 +152,6 @@ class MainViewController: BaseVC {
         }
         
         let smallButtonSpacing: Int = 64
-        
         
         ARButton.snp.makeConstraints {
             $0.centerX.equalTo(previewImg.snp.centerX)
@@ -342,18 +334,7 @@ class MainViewController: BaseVC {
             self.shootButton.isEnabled = true
         })
     }
-    
-//    func saveImageWithFrame() {
-//        UIGraphicsBeginImageContextWithOptions(viewWithFrame.bounds.size, false, 0)
-//        viewWithFrame.drawHierarchy(in: viewWithFrame.bounds, afterScreenUpdates: true)
-//        imgToShare = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//
-//        // Save photo into a custom folder in the Camera Roll
-//        savePhoto(image: imgToShare, albumName: APP_NAME, completion: nil)
-//    }
-    
-    
+
     func shareLstPhotoButt() {
         if previewImg.image != nil {
 //            playSound("button_click", ofType: "wav")
