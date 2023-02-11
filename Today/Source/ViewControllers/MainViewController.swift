@@ -24,7 +24,7 @@ class MainViewController: BaseVC {
         $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
     }
     private lazy var flashButton = UIButton().then {
-        $0.backgroundColor = .blue
+        $0.setBackgroundImage(UIImage(named: "cam_flash_off"), for: .normal)
     }
     private lazy var swicthScreenButton = UIButton().then {
         let systemImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
