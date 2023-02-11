@@ -102,6 +102,7 @@ class MainViewController: BaseVC {
         
         filterButton.rx.tap
             .bind {
+                self.filterButtonDidTap()
                 print("filterButton 클릭됨")
             }.disposed(by: disposeBag)
         
@@ -407,5 +408,10 @@ class MainViewController: BaseVC {
                 self.setCameraUIAndFilters()
             }
         }
+    }
+    
+    func filterButtonDidTap() {
+        let filterListVC = FilterListViewController()
+        self.navigationController?.pushViewController(filterListVC, animated: true)
     }
 }
