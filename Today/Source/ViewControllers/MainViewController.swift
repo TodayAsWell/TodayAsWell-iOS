@@ -12,7 +12,24 @@ class MainViewController: BaseVC {
     
     private lazy var renderView = RenderView()
     
-    private lazy var flashButton = UIButton()
+    private lazy var ARButton = UIButton().then {
+        let systemImage = UIImage(systemName: "a.square")
+        $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
+    }
+    private lazy var pendingButton = UIButton().then {
+        $0.backgroundColor = .gray
+    }
+    private lazy var timerButton = UIButton().then {
+        let systemImage = UIImage(systemName: "timer")
+        $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
+    }
+    private lazy var flashButton = UIButton().then {
+        $0.backgroundColor = .blue
+    }
+    private lazy var screenTransitionButton = UIButton().then {
+        let systemImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
+        $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
+    }
     
     private lazy var shootButton = UIButton()
     
@@ -56,7 +73,6 @@ class MainViewController: BaseVC {
         
         view.backgroundColor = .white
         
-        flashButton.backgroundColor = .blue
         imgInFrame.backgroundColor = .clear
         previewButton.backgroundColor = .clear
         filterButton.backgroundColor = .orange
@@ -87,26 +103,93 @@ class MainViewController: BaseVC {
         filterButton.rx.tap
             .bind {
                 print("filterButton 클릭됨")
-            }
+            }.disposed(by: disposeBag)
+        
+        ARButton.rx.tap
+            .bind {
+                print("ARButton tap")
+            }.disposed(by: disposeBag)
+        
+        pendingButton.rx.tap
+            .bind {
+                print("pendingButton tap")
+            }.disposed(by: disposeBag)
+        
+        timerButton.rx.tap
+            .bind {
+                print("timerButton tap")
+            }.disposed(by: disposeBag)
+        
+        flashButton.rx.tap
+            .bind {
+                print("flashButton tap")
+            }.disposed(by: disposeBag)
+        
+        screenTransitionButton.rx.tap
+            .bind {
+                print("screenTransitionButton tap")
+            }.disposed(by: disposeBag)
     }
     
     override func layout() {
         view.addSubview(renderView)
         view.addSubview(shootButton)
-        view.addSubview(flashButton)
         [previewImg, imgInFrame].forEach { view.addSubview($0) }
         view.addSubview(previewButton)
         view.addSubview(filterButton)
+        
+        [
+            ARButton,
+            pendingButton,
+            timerButton,
+            flashButton,
+            screenTransitionButton
+            
+        ].forEach { view.addSubview($0) }
         
         renderView.snp.makeConstraints {
             $0.height.equalTo(330)
             $0.width.equalTo(330.0)
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(190)
+            $0.top.equalToSuperview().offset(165)
         }
         
+        let smallButtonSpacing: Int = 64
+        
+        
+        ARButton.snp.makeConstraints {
+            $0.centerX.equalTo(previewImg.snp.centerX)
+            $0.top.equalTo(renderView.snp.bottom).offset(100.0)
+            $0.width.height.equalTo(30.0)
+        }
+        
+        pendingButton.snp.makeConstraints {
+            $0.top.equalTo(ARButton.snp.top)
+            $0.width.height.equalTo(ARButton.snp.width)
+            $0.centerX.equalTo(ARButton.snp.centerX).offset(smallButtonSpacing)
+        }
+        
+        timerButton.snp.makeConstraints {
+            $0.top.equalTo(pendingButton.snp.top)
+            $0.width.height.equalTo(pendingButton.snp.width)
+            $0.centerX.equalTo(pendingButton.snp.centerX).offset(smallButtonSpacing)
+        }
+        
+        flashButton.snp.makeConstraints {
+            $0.top.equalTo(timerButton.snp.top)
+            $0.width.height.equalTo(timerButton.snp.width)
+            $0.centerX.equalTo(timerButton.snp.centerX).offset(smallButtonSpacing)
+        }
+        
+        screenTransitionButton.snp.makeConstraints {
+            $0.top.equalTo(flashButton.snp.top)
+            $0.width.height.equalTo(flashButton.snp.width)
+            $0.centerX.equalTo(flashButton.snp.centerX).offset(smallButtonSpacing)
+        }
+        
+        
         shootButton.snp.makeConstraints {
-            $0.top.equalTo(renderView.snp.bottom).offset(110.0)
+            $0.top.equalTo(timerButton.snp.bottom).offset(20.0)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(100.0)
         }
