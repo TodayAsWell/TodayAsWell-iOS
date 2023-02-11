@@ -12,6 +12,10 @@
 		0EA0A540298E7EE300652588 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A53F298E7EE300652588 /* Configurations.swift */; };
 		0EA0A557298EA61900652588 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A556298EA61900652588 /* BaseVC.swift */; };
 		0EA0A55B298FB5F300652588 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A55A298FB5F300652588 /* ImageViewController.swift */; };
+		0EB973B6299784EB00FE8CF8 /* FilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */; };
+		0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973B92997884E00FE8CF8 /* CameraCell.swift */; };
+		0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */; };
+		0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BD299793FF00FE8CF8 /* BaseNC.swift */; };
 		2632D15B22788D100027AAB9 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 26D9AB63227747FA00403289 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		263C158E233A1F5F00675CFF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 263C158D233A1F5F00675CFF /* Launch Screen.storyboard */; };
 		264C86882285A5A200950C52 /* flash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 264C86842285A5A100950C52 /* flash.wav */; };
@@ -90,6 +94,10 @@
 		0EA0A53F298E7EE300652588 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		0EA0A556298EA61900652588 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		0EA0A55A298FB5F300652588 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListViewController.swift; sourceTree = "<group>"; };
+		0EB973B92997884E00FE8CF8 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
+		0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalViewController.swift; sourceTree = "<group>"; };
+		0EB973BD299793FF00FE8CF8 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
 		1FAD97705683A226C7341926 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		263C158D233A1F5F00675CFF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		264C86842285A5A100950C52 /* flash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flash.wav; sourceTree = "<group>"; };
@@ -223,6 +231,9 @@
 			children = (
 				0EA0A55A298FB5F300652588 /* ImageViewController.swift */,
 				0EA0A53A298E6E8A00652588 /* MainViewController.swift */,
+				0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */,
+				0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */,
+				0EB973B92997884E00FE8CF8 /* CameraCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA0A556298EA61900652588 /* BaseVC.swift */,
+				0EB973BD299793FF00FE8CF8 /* BaseNC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -348,7 +360,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 1320;
-				ORGANIZATIONNAME = XScoder;
+				ORGANIZATIONNAME = Goodjunha;
 				TargetAttributes = {
 					722FE59919FFD91800BA05A1 = {
 						CreatedOnToolsVersion = 6.1;
@@ -501,9 +513,13 @@
 			files = (
 				722FE5A019FFD91800BA05A1 /* AppDelegate.swift in Sources */,
 				0EA0A557298EA61900652588 /* BaseVC.swift in Sources */,
+				0EB973B6299784EB00FE8CF8 /* FilterListViewController.swift in Sources */,
 				0EA0A540298E7EE300652588 /* Configurations.swift in Sources */,
 				0EA0A55B298FB5F300652588 /* ImageViewController.swift in Sources */,
 				2673572E2284360B00AE565B /* GPUImage.xcodeproj in Sources */,
+				0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */,
+				0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */,
+				0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */,
 				0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */,
 				0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */,
 			);
