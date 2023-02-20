@@ -13,22 +13,25 @@ class MainViewController: BaseVC {
     private lazy var renderView = RenderView()
     
     private lazy var ARButton = UIButton().then {
-        let systemImage = UIImage(systemName: "a.square")
-        $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
+        let imageIcon = UIImage(systemName: "a.square")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
+    
     private lazy var pendingButton = UIButton().then {
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 10
     }
     private lazy var timerButton = UIButton().then {
-        let systemImage = UIImage(systemName: "timer")
-        $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
+        
+        let imageIcon = UIImage(systemName: "timer")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
     private lazy var flashButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "cam_flash_off"), for: .normal)
     }
     private lazy var swicthScreenButton = UIButton().then {
-        let systemImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
-        $0.setBackgroundImage(systemImage, for: UIControl.State.normal)
+        let imageIcon = UIImage(systemName: "arrow.triangle.2.circlepath.camera")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
     
     private lazy var shootButton = UIButton().then {
@@ -39,7 +42,10 @@ class MainViewController: BaseVC {
     private var previewImg = UIImageView()
     var imgInFrame = UIImageView()
     
-    var filterButton = UIButton()
+    var filterButton = UIButton().then {
+        let imageIcon = UIImage(systemName: "camera.filters")
+        $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
+    }
     
     
     private var whiteFadingImg = UIImageView()
@@ -70,7 +76,6 @@ class MainViewController: BaseVC {
         
         imgInFrame.backgroundColor = .clear
         previewButton.backgroundColor = .clear
-        filterButton.backgroundColor = .orange
         
         viewWithFrame.frame.origin.y = view.frame.size.height
     }

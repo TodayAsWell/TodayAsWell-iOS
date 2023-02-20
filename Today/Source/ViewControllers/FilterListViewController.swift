@@ -59,8 +59,6 @@ extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.proLabel.layer.cornerRadius = 12
         
-        
-        // Tags
         cell.camSelectButton.tag = indexPath.row
         
         return cell
@@ -74,28 +72,4 @@ extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
         cameraInUse = indexPath.row
         dismiss(animated: true, completion: nil)
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        if indexPath.row < 2 {
-//            cameraInUse = sender.tag
-//            dismiss(animated: true, completion: nil)
-//        }
-//
-//
-//        if sender.tag >= 2 {
-//            // NO Pro IAP Made...
-//            if !proIAPmade {
-//                let vc = storyboard?.instantiateViewController(withIdentifier: "IAPScreen") as! IAPScreen
-//                vc.modalPresentationStyle = .fullScreen
-//                present(vc, animated: true, completion: nil)
-//
-//            // Pro IAP Made -> Use all Pro Cameras!
-//            } else {
-//                cameraInUse = sender.tag
-//                dismiss(animated: true, completion: nil)
-//            }
-//
-//        }// ./ If
-//    }
 }
