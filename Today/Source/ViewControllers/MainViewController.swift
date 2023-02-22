@@ -399,7 +399,17 @@ class MainViewController: BaseVC {
     }
     
     func filterButtonDidTap() {
-        let filterListVC = FilterListViewController()
-        self.navigationController?.pushViewController(filterListVC, animated: true)
+        
+        do {
+            sharedImageProcessingContext.runOperationSynchronously{
+                camera.stopCapture()
+                camera.removeAllTargets()
+            }
+            
+            let filterListVC = FilterListViewController()
+            filterListVC.modalPresentationStyle = .fullScreen
+            present(filterListVC, animated: true, completion: nil)
+        }// ./ do
+
     }
 }
