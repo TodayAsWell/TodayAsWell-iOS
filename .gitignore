@@ -1,9 +1,6 @@
 .DS_Store
-PodFile.lock
-
 
 PSD
-
 # Created by https://www.toptal.com/developers/gitignore/api/powershell,objective-c,xcode,swift,cocoapods
 # Edit at https://www.toptal.com/developers/gitignore?templates=powershell,objective-c,xcode,swift,cocoapods
 
