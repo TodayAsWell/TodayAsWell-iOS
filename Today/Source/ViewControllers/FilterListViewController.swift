@@ -15,6 +15,19 @@ import RxCocoa
 @available(iOS 13.0, *)
 class FilterListViewController: BaseVC {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        proIAPmade = DEFAULTS.bool(forKey: "proIAPmade")
+        print("PRO IAP MADE: \(proIAPmade)")
+        
+        let exitButton: UIBarButtonItem? = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(exitButtonDidTap))
+        exitButton?.tintColor = .blue
+        exitButton?.title = "나가기"
+        
+        self.navigationItem.leftBarButtonItem = exitButton
+    }
+    
     private lazy var tableView = UITableView().then {
         $0.register(CameraCell.self, forCellReuseIdentifier: CameraCell.identifier)
         $0.delegate = self
@@ -23,11 +36,12 @@ class FilterListViewController: BaseVC {
     
     override func layout() {
         super.layout()
-        
+                
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.leading.trailing.equalToSuperview()
         }
     }
     
@@ -71,5 +85,10 @@ extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cameraInUse = indexPath.row
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    func exitButtonDidTap() {
+        self.dismiss(animated: true)
     }
 }
