@@ -24,13 +24,13 @@ class BaseVC: UIViewController {
         self.view.backgroundColor = .systemBackground
         self.bind()
         self.configure()
+        self.touchEvent()
         self.view.setNeedsUpdateConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.attribute()
-        self.touchEvent()
     }
     
     func touchEvent() { }
