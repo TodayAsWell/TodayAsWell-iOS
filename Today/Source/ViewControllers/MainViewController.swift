@@ -271,6 +271,9 @@ class MainViewController: BaseVC {
                 
             case 0:
                 camera --> renderView
+            case 1:
+                whiteBalanceFlt.temperature = 4000
+                camera --> saturationFlt --> whiteBalanceFlt --> renderView
             break
                 
             default:break
