@@ -38,6 +38,38 @@ class EditViewController: BaseVC {
         frameView.backgroundColor = .black
         photoFrameImage.image = UIImage(named: "photo_frame1")
         framesScrollView.backgroundColor = .red
+        setFrameButtonsInScrollView()
+    }
+    
+    func setFrameButtonsInScrollView() {
+        var X:CGFloat = 10
+        let Y:CGFloat = 0
+        let W:CGFloat = 44
+        let H:CGFloat = 60
+        let G:CGFloat = 8
+        var counter = 0
+        
+        for i in 0..<PHOTO_FRAMES_NUMBER {
+            counter = i
+            
+            // Button
+            let aButt = UIButton(type: .custom)
+            aButt.frame = CGRect(x: X, y: Y, width: W, height: H)
+            aButt.tag = i
+            aButt.setBackgroundImage(UIImage(named: "photo_frame\(i+1)"), for: .normal)
+            aButt.addTarget(self, action: #selector(chooseFrameButt(_:)), for: .touchUpInside)
+            
+            // Add Buttons based on X
+            X += W + G
+            framesScrollView.addSubview(aButt)
+        } // ./ For
+        
+        // Place Buttons into the ScrollView
+        framesScrollView.contentSize = CGSize(width: W * CGFloat(counter+3), height: H)
+    }
+    
+    @objc func chooseFrameButt(_ sender:UIButton) {
+        photoFrameImage.image = UIImage(named: "photo_frame" + "\(sender.tag+1)" )
     }
     
     
