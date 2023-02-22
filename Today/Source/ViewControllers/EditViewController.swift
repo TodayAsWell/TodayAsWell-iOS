@@ -9,15 +9,21 @@
 import UIKit
 import Then
 import SnapKit
+import RxCocoa
+import RxSwift
 
 @available(iOS 13.0, *)
 class EditViewController: BaseVC {
     private lazy var frameView = UIView()
     private lazy var imageInFrame = UIImageView()
     private lazy var photoFrameImage = UIImageView()
-    private lazy var captionTxt = UITextView()
+    
+    private lazy var captionTextView = UITextView().then {
+        $0.textAlignment = .center
+        $0.font = UIFont.systemFont(ofSize: 14)
+    }
     private lazy var framesScrollView = UIScrollView()
-    private lazy var captionTxtField = UITextField()
+    private lazy var captionTextField = UITextField()
     
     private lazy var writingButton = UIButton().then {
         let image = UIImage(named: "add_caption_butt")
@@ -31,14 +37,27 @@ class EditViewController: BaseVC {
     
     var theImgToShare = UIImage()
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func attribute() {
         super.attribute()
         
         photoFrameImage.image = takenImage
-        frameView.backgroundColor = .black
+        frameView.backgroundColor = .white
         photoFrameImage.image = UIImage(named: "photo_frame1")
-        framesScrollView.backgroundColor = .red
+        captionTextView.isUserInteractionEnabled = true
         setFrameButtonsInScrollView()
+        
+    }
+    
+    override func touchEvent() {
+        
+        writingButton.rx.tap
+            .bind {
+                self.addCaptionButton()
+            }.disposed(by: disposeBag)
     }
     
     func setFrameButtonsInScrollView() {
@@ -52,26 +71,39 @@ class EditViewController: BaseVC {
         for i in 0..<PHOTO_FRAMES_NUMBER {
             counter = i
             
-            // Button
-            let aButt = UIButton(type: .custom)
-            aButt.frame = CGRect(x: X, y: Y, width: W, height: H)
-            aButt.tag = i
-            aButt.setBackgroundImage(UIImage(named: "photo_frame\(i+1)"), for: .normal)
-            aButt.addTarget(self, action: #selector(chooseFrameButt(_:)), for: .touchUpInside)
+            let buttons = UIButton(type: .custom)
+            buttons.frame = CGRect(x: X, y: Y, width: W, height: H)
+            buttons.tag = i
+            buttons.setBackgroundImage(UIImage(named: "photo_frame\(i+1)"), for: .normal)
+            buttons.addTarget(self, action: #selector(chooseFrameButt(_:)), for: .touchUpInside)
             
-            // Add Buttons based on X
             X += W + G
-            framesScrollView.addSubview(aButt)
-        } // ./ For
+            framesScrollView.addSubview(buttons)
+        }
         
-        // Place Buttons into the ScrollView
         framesScrollView.contentSize = CGSize(width: W * CGFloat(counter+3), height: H)
     }
     
-    @objc func chooseFrameButt(_ sender:UIButton) {
-        photoFrameImage.image = UIImage(named: "photo_frame" + "\(sender.tag+1)" )
+    func addCaptionButton() {
+        let toolbar = UIView(frame: CGRect(x: 0, y: view.frame.size.height+44, width: view.frame.size.width, height: 44))
+        toolbar.backgroundColor = UIColor.clear
+
+        captionTextField.frame = CGRect(x: 12, y: -12, width: toolbar.frame.size.width - 12, height: 44)
+        captionTextField.delegate = self
+        captionTextField.textAlignment = .center
+        captionTextField.placeholder = "Type a caption"
+        captionTextField.font = UIFont.systemFont(ofSize: 14)
+        captionTextField.returnKeyType = .done
+        captionTextField.clearButtonMode = .always
+        
+        toolbar.addSubview(captionTextField)
+
+        captionTextView.inputAccessoryView = toolbar
+        captionTextView.delegate = self
+        
+        captionTextView.becomeFirstResponder()
+        captionTextField.becomeFirstResponder()
     }
-    
     
     override func layout() {
         super.layout()
@@ -80,6 +112,7 @@ class EditViewController: BaseVC {
             frameView,
             photoFrameImage,
             imageInFrame,
+            captionTextView,
             writingButton,
             shareButton,
             framesScrollView
@@ -105,6 +138,14 @@ class EditViewController: BaseVC {
             $0.height.equalTo(260.0)
         }
         
+        captionTextView.snp.makeConstraints {
+            $0.top.equalTo(imageInFrame.snp.bottom).offset(10.0)
+            $0.centerX.equalTo(photoFrameImage.snp.centerX)
+            $0.width.equalTo(190.0)
+            $0.height.equalTo(35.0)
+            
+        }
+        
         writingButton.snp.makeConstraints {
             $0.top.equalTo(frameView.snp.bottom).offset(10.0)
             $0.leading.equalToSuperview().offset(80.0)
@@ -123,4 +164,21 @@ class EditViewController: BaseVC {
             $0.height.equalTo(100)
         }
     }
+    
+    
+    @objc func chooseFrameButt(_ sender:UIButton) {
+        photoFrameImage.image = UIImage(named: "photo_frame" + "\(sender.tag+1)" )
+    }
+}
+
+@available(iOS 13.0, *)
+extension EditViewController: UITextViewDelegate, UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        captionTextView.text = textField.text
+        captionTextView.resignFirstResponder()
+        return true
+    }
+    
 }
