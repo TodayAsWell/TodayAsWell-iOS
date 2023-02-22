@@ -44,7 +44,7 @@ class EditViewController: BaseVC {
     override func attribute() {
         super.attribute()
         
-        photoFrameImage.image = takenImage
+        imageInFrame.image = takenImage
         frameView.backgroundColor = .white
         photoFrameImage.image = UIImage(named: "photo_frame1")
         captionTextView.isUserInteractionEnabled = true
@@ -57,6 +57,11 @@ class EditViewController: BaseVC {
         writingButton.rx.tap
             .bind {
                 self.addCaptionButton()
+            }.disposed(by: disposeBag)
+        
+        shareButton.rx.tap
+            .bind {
+                self.shareButtonDidTap()
             }.disposed(by: disposeBag)
     }
     
@@ -87,7 +92,7 @@ class EditViewController: BaseVC {
     func addCaptionButton() {
         let toolbar = UIView(frame: CGRect(x: 0, y: view.frame.size.height+44, width: view.frame.size.width, height: 44))
         toolbar.backgroundColor = UIColor.clear
-
+        
         captionTextField.frame = CGRect(x: 12, y: -12, width: toolbar.frame.size.width - 12, height: 44)
         captionTextField.delegate = self
         captionTextField.textAlignment = .center
@@ -97,12 +102,27 @@ class EditViewController: BaseVC {
         captionTextField.clearButtonMode = .always
         
         toolbar.addSubview(captionTextField)
-
+        
         captionTextView.inputAccessoryView = toolbar
         captionTextView.delegate = self
         
         captionTextView.becomeFirstResponder()
         captionTextField.becomeFirstResponder()
+    }
+    
+    func shareButtonDidTap() {
+        UIGraphicsBeginImageContextWithOptions(frameView.bounds.size, false, 0)
+        frameView.drawHierarchy(in: frameView.bounds, afterScreenUpdates: true)
+        let imgToShare = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // Share
+        let titleMessage  = "멋진 사진을 공유해보세요 \(APP_NAME)"
+        let shareItems = [titleMessage, imgToShare] as [Any]
+        
+        let vc = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        vc.excludedActivityTypes = [.print, .postToWeibo, .copyToPasteboard, .addToReadingList, .postToVimeo]
+        present(vc, animated: true, completion: nil)
     }
     
     override func layout() {

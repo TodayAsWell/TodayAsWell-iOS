@@ -61,11 +61,6 @@ class MainViewController: BaseVC {
     override func attribute() {
         setCameraUIAndFilters()
         
-//        let camStrArray = listOfCameras[cameraInUse].components(separatedBy: "__")
-//        camNameLabel.text = camStrArray[1]
-//
-//        view.backgroundColor = cameraColors[cameraInUse]
-        
         whiteFadingImg.layer.cornerRadius = previewImg.bounds.size.width/2
         whiteFadingImg.layer.borderColor = UIColor.black.cgColor
         whiteFadingImg.layer.borderWidth = 6
@@ -96,7 +91,7 @@ class MainViewController: BaseVC {
         
         previewButton.rx.tap
             .bind {
-                self.shareLstPhotoButt()
+                self.shareListPhotoButton()
                 print("previewButton 호출")
             }.disposed(by: disposeBag)
         
@@ -342,23 +337,17 @@ class MainViewController: BaseVC {
             self.shootButton.isEnabled = true
         })
     }
-
-    func shareLstPhotoButt() {
-        if previewImg.image != nil {
-//            playSound("button_click", ofType: "wav")
-            do {
-                sharedImageProcessingContext.runOperationSynchronously{
-                    camera.stopCapture()
-                    camera.removeAllTargets()
-                }
-                
-                let vc = ImageViewController()
-//                vc.theImgToShare = imgToShare
-                vc.modalPresentationStyle = .fullScreen
-                present(vc, animated: true, completion: nil)
-            }
-        }
-    }
+//
+//    func saveImageWithFrame() {
+//        UIGraphicsBeginImageContextWithOptions(viewWithFrame.bounds.size, false, 0)
+//        viewWithFrame.drawHierarchy(in: viewWithFrame.bounds, afterScreenUpdates: true)
+//        imgToShare = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+//        UIGraphicsEndImageContext()
+//
+//        // Save photo into a custom folder in the Camera Roll
+//        savePhoto(image: imgToShare, albumName: APP_NAME, completion: nil)
+//    }
+    
     
     func swicthScreenButtonDidTap() {
         playSound("button_click", ofType: "wav")
@@ -413,6 +402,22 @@ class MainViewController: BaseVC {
             filterListVC.modalPresentationStyle = .fullScreen
             present(filterListVC, animated: true, completion: nil)
         }// ./ do
-
+    }
+    
+    func shareListPhotoButton() {
+        if previewImg.image != nil {
+//            playSound("button_click", ofType: "wav")
+            do {
+                sharedImageProcessingContext.runOperationSynchronously{
+                    camera.stopCapture()
+                    camera.removeAllTargets()
+                }
+                
+                let vc = EditViewController()
+                vc.theImgToShare = imgToShare
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
+            }
+        }
     }
 }
