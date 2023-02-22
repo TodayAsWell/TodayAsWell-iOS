@@ -141,7 +141,6 @@ class MainViewController: BaseVC {
             timerButton,
             flashButton,
             swicthScreenButton
-            
         ].forEach { view.addSubview($0) }
         
         renderView.snp.makeConstraints {

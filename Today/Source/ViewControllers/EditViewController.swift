@@ -35,6 +35,10 @@ class EditViewController: BaseVC {
         $0.setBackgroundImage(image, for: UIControl.State.normal)
     }
     
+    private lazy var dismissButton = UIButton().then {
+        $0.backgroundColor = .red
+    }
+    
     var theImgToShare = UIImage()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,6 +66,11 @@ class EditViewController: BaseVC {
         shareButton.rx.tap
             .bind {
                 self.shareButtonDidTap()
+            }.disposed(by: disposeBag)
+        
+        dismissButton.rx.tap
+            .bind {
+                self.dismissButtonDidTap()
             }.disposed(by: disposeBag)
     }
     
@@ -135,7 +144,8 @@ class EditViewController: BaseVC {
             captionTextView,
             writingButton,
             shareButton,
-            framesScrollView
+            framesScrollView,
+            dismissButton
         ].forEach { view.addSubview($0) }
         
         frameView.snp.makeConstraints {
@@ -183,11 +193,21 @@ class EditViewController: BaseVC {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(100)
         }
+        
+        dismissButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10.0)
+            $0.leading.equalToSuperview().offset(30.0)
+            $0.width.height.equalTo(40.0)
+        }
     }
     
     
     @objc func chooseFrameButt(_ sender:UIButton) {
         photoFrameImage.image = UIImage(named: "photo_frame" + "\(sender.tag+1)" )
+    }
+    
+    func dismissButtonDidTap() {
+        self.dismiss(animated: true)
     }
 }
 
