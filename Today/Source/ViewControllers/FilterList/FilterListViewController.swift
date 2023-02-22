@@ -15,12 +15,15 @@ import RxCocoa
 @available(iOS 13.0, *)
 class FilterListViewController: BaseVC {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        proIAPmade = DEFAULTS.bool(forKey: "proIAPmade")
-        print("PRO IAP MADE: \(proIAPmade)")
-        
+    // MARK: - UIComponenets
+    internal lazy var FilterListTableView = UITableView().then {
+        $0.register(CameraCell.self, forCellReuseIdentifier: CameraCell.identifier)
+        $0.delegate = self
+        $0.dataSource = self
+    }
+    
+    // MARK: - FunctionFunctions
+    func navigationSettings() {
         let exitButton: UIBarButtonItem? = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(exitButtonDidTap))
         exitButton?.tintColor = .blue
         exitButton?.title = "나가기"
@@ -28,31 +31,24 @@ class FilterListViewController: BaseVC {
         self.navigationItem.leftBarButtonItem = exitButton
     }
     
-    private lazy var tableView = UITableView().then {
-        $0.register(CameraCell.self, forCellReuseIdentifier: CameraCell.identifier)
-        $0.delegate = self
-        $0.dataSource = self
-    }
+    // MARK: - Initializer
     
-    override func layout() {
-        super.layout()
-                
-        view.addSubview(tableView)
-        
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.leading.trailing.equalToSuperview()
-        }
-    }
+    // MARK: - LifeCycle
+    override func viewDidLayoutSubviews() { layout() }
+    override func viewWillAppear(_ animated: Bool) { attribute() }
+    override func viewDidLoad() { }
     
-    func backButt(_ sender: Any) {
-       dismiss(animated: true, completion: nil)
-   }
+    // MARK: - Actions
+    @objc
+    func exitButtonDidTap() {
+        self.dismiss(animated: true)
+    }
 }
 
 @available(iOS 13.0, *)
 extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: - TableViewSetting
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         listOfCameras.count
     }
@@ -85,10 +81,5 @@ extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cameraInUse = indexPath.row
         dismiss(animated: true, completion: nil)
-    }
-    
-    @objc
-    func exitButtonDidTap() {
-        self.dismiss(animated: true)
     }
 }

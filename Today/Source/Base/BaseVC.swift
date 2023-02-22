@@ -17,26 +17,14 @@ class BaseVC: UIViewController {
     let bound = UIScreen.main.bounds
     var disposeBag = DisposeBag()
     
-    override func viewDidLayoutSubviews() { self.layout() }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.bind()
         self.configure()
-        self.touchEvent()
         self.view.setNeedsUpdateConstraints()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.attribute()
-    }
-    
-    func touchEvent() { }
     func configure() { }
     func bind() { }
-    func layout() { }
-    func attribute() { }
 }
 

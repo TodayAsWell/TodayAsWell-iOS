@@ -12,8 +12,10 @@ import Then
 
 class CameraCell: UITableViewCell {
     
+    // MARK: - Properties
     static let identifier = "CameraTableViewCell"
     
+    // MARK: - UIComponenets
     var camImg = UIImageView()
     var camNameLabel = UILabel()
     var camDescriptionLabel = UILabel().then {
@@ -22,6 +24,7 @@ class CameraCell: UITableViewCell {
     var camSelectButton = UIButton()
     var proLabel = UILabel()
     
+    // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -29,6 +32,12 @@ class CameraCell: UITableViewCell {
         layout()
     }
     
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Methods
     func layout() {
         [
             camImg,
@@ -54,11 +63,4 @@ class CameraCell: UITableViewCell {
         }
         
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
 }

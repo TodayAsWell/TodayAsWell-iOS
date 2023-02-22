@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0E6593DF29A602540049E1AF /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6593DE29A602540049E1AF /* EditViewController.swift */; };
+		0E6593EE29A63E2D0049E1AF /* EditViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6593ED29A63E2D0049E1AF /* EditViewController+Layout.swift */; };
+		0E6593F129A6415D0049E1AF /* MainViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6593F029A6415D0049E1AF /* MainViewController+Layout.swift */; };
+		0E6593F629A642600049E1AF /* FilterListViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6593F529A642600049E1AF /* FilterListViewController+Layout.swift */; };
 		0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A538298E6E7A00652588 /* SceneDelegate.swift */; };
 		0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A53A298E6E8A00652588 /* MainViewController.swift */; };
 		0EA0A540298E7EE300652588 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A53F298E7EE300652588 /* Configurations.swift */; };
 		0EA0A557298EA61900652588 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A556298EA61900652588 /* BaseVC.swift */; };
-		0EA0A55B298FB5F300652588 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0A55A298FB5F300652588 /* ImageViewController.swift */; };
 		0EB973B6299784EB00FE8CF8 /* FilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */; };
 		0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973B92997884E00FE8CF8 /* CameraCell.swift */; };
 		0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */; };
@@ -91,11 +93,13 @@
 
 /* Begin PBXFileReference section */
 		0E6593DE29A602540049E1AF /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		0E6593ED29A63E2D0049E1AF /* EditViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditViewController+Layout.swift"; sourceTree = "<group>"; };
+		0E6593F029A6415D0049E1AF /* MainViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Layout.swift"; sourceTree = "<group>"; };
+		0E6593F529A642600049E1AF /* FilterListViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListViewController+Layout.swift"; sourceTree = "<group>"; };
 		0EA0A538298E6E7A00652588 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0EA0A53A298E6E8A00652588 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0EA0A53F298E7EE300652588 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		0EA0A556298EA61900652588 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
-		0EA0A55A298FB5F300652588 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListViewController.swift; sourceTree = "<group>"; };
 		0EB973B92997884E00FE8CF8 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +176,42 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0E6593EF29A641300049E1AF /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				0E6593DE29A602540049E1AF /* EditViewController.swift */,
+				0E6593ED29A63E2D0049E1AF /* EditViewController+Layout.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		0E6593F429A6423A0049E1AF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0EA0A53A298E6E8A00652588 /* MainViewController.swift */,
+				0E6593F029A6415D0049E1AF /* MainViewController+Layout.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0E6593F829A643BA0049E1AF /* FilterList */ = {
+			isa = PBXGroup;
+			children = (
+				0E6593F929A6447C0049E1AF /* Cell */,
+				0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */,
+				0E6593F529A642600049E1AF /* FilterListViewController+Layout.swift */,
+			);
+			path = FilterList;
+			sourceTree = "<group>";
+		};
+		0E6593F929A6447C0049E1AF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0EB973B92997884E00FE8CF8 /* CameraCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0EA0A548298E8ED200652588 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,12 +271,10 @@
 		0EA0A54E298E8F7D00652588 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0EA0A55A298FB5F300652588 /* ImageViewController.swift */,
-				0E6593DE29A602540049E1AF /* EditViewController.swift */,
-				0EA0A53A298E6E8A00652588 /* MainViewController.swift */,
-				0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */,
+				0E6593EF29A641300049E1AF /* Edit */,
+				0E6593F429A6423A0049E1AF /* Main */,
+				0E6593F829A643BA0049E1AF /* FilterList */,
 				0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */,
-				0EB973B92997884E00FE8CF8 /* CameraCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -514,15 +552,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6593EE29A63E2D0049E1AF /* EditViewController+Layout.swift in Sources */,
 				722FE5A019FFD91800BA05A1 /* AppDelegate.swift in Sources */,
 				0EA0A557298EA61900652588 /* BaseVC.swift in Sources */,
 				0EB973B6299784EB00FE8CF8 /* FilterListViewController.swift in Sources */,
+				0E6593F629A642600049E1AF /* FilterListViewController+Layout.swift in Sources */,
 				0EA0A540298E7EE300652588 /* Configurations.swift in Sources */,
-				0EA0A55B298FB5F300652588 /* ImageViewController.swift in Sources */,
 				2673572E2284360B00AE565B /* GPUImage.xcodeproj in Sources */,
 				0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */,
 				0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */,
 				0E6593DF29A602540049E1AF /* EditViewController.swift in Sources */,
+				0E6593F129A6415D0049E1AF /* MainViewController+Layout.swift in Sources */,
 				0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */,
 				0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */,
 				0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */,

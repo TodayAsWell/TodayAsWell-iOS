@@ -10,36 +10,37 @@ import AVFoundation
 @available(iOS 13.0, *)
 class MainViewController: BaseVC {
     
-    private lazy var renderView = RenderView()
+    // MARK: - UIComponenets
+    internal lazy var renderView = RenderView()
     
-    private lazy var ARButton = UIButton().then {
+    internal lazy var ARButton = UIButton().then {
         let imageIcon = UIImage(systemName: "a.square")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
     
-    private lazy var pendingButton = UIButton().then {
+    internal lazy var pendingButton = UIButton().then {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
     }
-    private lazy var timerButton = UIButton().then {
+    internal lazy var timerButton = UIButton().then {
         
         let imageIcon = UIImage(systemName: "timer")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
-    private lazy var flashButton = UIButton().then {
+    internal lazy var flashButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "cam_flash_off"), for: .normal)
     }
-    private lazy var swicthScreenButton = UIButton().then {
+    internal lazy var swicthScreenButton = UIButton().then {
         let imageIcon = UIImage(systemName: "arrow.triangle.2.circlepath.camera")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
     
-    private lazy var shootButton = UIButton().then {
+    internal lazy var shootButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "PhotoButtonOff"), for: .normal)
     }
     
-    private lazy var previewButton = UIButton()
-    private var previewImg = UIImageView()
+    internal lazy var previewButton = UIButton()
+    internal var previewImg = UIImageView()
     var imgInFrame = UIImageView()
     
     var filterButton = UIButton().then {
@@ -47,8 +48,7 @@ class MainViewController: BaseVC {
         $0.setBackgroundImage(imageIcon, for: UIControl.State.normal)
     }
     
-    
-    private var whiteFadingImg = UIImageView()
+    internal var whiteFadingImg = UIImageView()
     var viewWithFrame = UIView()
     var camNameLabel: UILabel!
     
@@ -58,167 +58,12 @@ class MainViewController: BaseVC {
     var isFlashON = false
     var isFrontCamera = false
     
-    override func attribute() {
-        setCameraUIAndFilters()
-        
-        whiteFadingImg.layer.cornerRadius = previewImg.bounds.size.width/2
-        whiteFadingImg.layer.borderColor = UIColor.black.cgColor
-        whiteFadingImg.layer.borderWidth = 6
-        
-        previewImg.layer.cornerRadius = previewImg.bounds.size.width/2
-        previewImg.layer.borderColor = UIColor.black.cgColor
-        previewImg.layer.borderWidth = 6
-        
-        imgInFrame.backgroundColor = .clear
-        previewButton.backgroundColor = .clear
-        
-        viewWithFrame.frame.origin.y = view.frame.size.height
-    }
-    
-    override func touchEvent() {
-        
-        view.backgroundColor = .black
-        
-        shootButton.rx.tap
-            .bind {
-                self.shootPictureButtonDidTap()
-            }.disposed(by: disposeBag)
-        
-        flashButton.rx.tap
-            .bind {
-                self.flashButtonDidTap()
-            }.disposed(by: disposeBag)
-        
-        previewButton.rx.tap
-            .bind {
-                self.shareListPhotoButton()
-                print("previewButton 호출")
-            }.disposed(by: disposeBag)
-        
-        filterButton.rx.tap
-            .bind {
-                self.filterButtonDidTap()
-                print("filterButton 클릭됨")
-            }.disposed(by: disposeBag)
-        
-        ARButton.rx.tap
-            .bind {
-                print("ARButton tap")
-            }.disposed(by: disposeBag)
-        
-        pendingButton.rx.tap
-            .bind {
-                print("pendingButton tap")
-            }.disposed(by: disposeBag)
-        
-        timerButton.rx.tap
-            .bind {
-                print("timerButton tap")
-            }.disposed(by: disposeBag)
-        
-        flashButton.rx.tap
-            .bind {
-                print("flashButton tap")
-            }.disposed(by: disposeBag)
-        
-        swicthScreenButton.rx.tap
-            .bind {
-                self.swicthScreenButtonDidTap()
-                print("screenTransitionButton tap")
-            }.disposed(by: disposeBag)
-    }
-    
-    override func layout() {
-        view.addSubview(renderView)
-        view.addSubview(shootButton)
-        [previewImg, imgInFrame].forEach { view.addSubview($0) }
-        view.addSubview(previewButton)
-        view.addSubview(filterButton)
-        
-        [
-            ARButton,
-            pendingButton,
-            timerButton,
-            flashButton,
-            swicthScreenButton
-        ].forEach { view.addSubview($0) }
-        
-        renderView.snp.makeConstraints {
-            $0.height.equalTo(330)
-            $0.width.equalTo(330.0)
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(165)
-        }
-        
-        let smallButtonSpacing: Int = 64
-        
-        ARButton.snp.makeConstraints {
-            $0.centerX.equalTo(previewImg.snp.centerX)
-            $0.top.equalTo(renderView.snp.bottom).offset(100.0)
-            $0.width.height.equalTo(30.0)
-        }
-        
-        pendingButton.snp.makeConstraints {
-            $0.top.equalTo(ARButton.snp.top)
-            $0.width.height.equalTo(ARButton.snp.width)
-            $0.centerX.equalTo(ARButton.snp.centerX).offset(smallButtonSpacing)
-        }
-        
-        timerButton.snp.makeConstraints {
-            $0.top.equalTo(pendingButton.snp.top)
-            $0.width.height.equalTo(pendingButton.snp.width)
-            $0.centerX.equalTo(pendingButton.snp.centerX).offset(smallButtonSpacing)
-        }
-        
-        flashButton.snp.makeConstraints {
-            $0.top.equalTo(timerButton.snp.top)
-            $0.width.height.equalTo(timerButton.snp.width)
-            $0.centerX.equalTo(timerButton.snp.centerX).offset(smallButtonSpacing)
-        }
-        
-        swicthScreenButton.snp.makeConstraints {
-            $0.top.equalTo(flashButton.snp.top)
-            $0.width.height.equalTo(flashButton.snp.width)
-            $0.centerX.equalTo(flashButton.snp.centerX).offset(smallButtonSpacing)
-        }
-        
-        
-        shootButton.snp.makeConstraints {
-            $0.top.equalTo(timerButton.snp.bottom).offset(20.0)
-            $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(100.0)
-        }
-        
-        previewImg.snp.makeConstraints {
-            $0.centerY.equalTo(shootButton.snp.centerY)
-            $0.leading.equalToSuperview().offset(30.0)
-            $0.width.height.equalTo(60.0)
-        }
-
-        imgInFrame.snp.makeConstraints {
-            $0.top.equalTo(previewImg.snp.top)
-            $0.trailing.equalTo(previewImg.snp.trailing)
-            $0.width.height.equalTo(previewImg.snp.width)
-        }
-
-        previewButton.snp.makeConstraints {
-            $0.top.equalTo(imgInFrame.snp.top)
-            $0.trailing.equalTo(imgInFrame.snp.trailing)
-            $0.width.height.equalTo(imgInFrame.snp.width)
-        }
-        
-        filterButton.snp.makeConstraints {
-            $0.top.equalTo(previewImg.snp.top)
-            $0.trailing.equalToSuperview().inset(30.0)
-            $0.width.height.equalTo(previewImg.snp.width)
-        }
-    }
-    
+    // MARK: - FunctionFunctions
     //필터를 사용할거 넣는 함수
     func setCameraUIAndFilters() {
         print("CAMERA IN USE: \(cameraInUse)")
         
-        // 필터 사용 않하는 거 모음
+        // 필터들
         saturationFlt.removeAllTargets()
         contrastFlt.removeAllTargets()
         exposureFlt.removeAllTargets()
@@ -269,11 +114,8 @@ class MainViewController: BaseVC {
                 whiteBalanceFlt.temperature = 4000
                 camera --> saturationFlt --> whiteBalanceFlt --> renderView
             break
-                
             default:break
-                
             }
-            
             camera.startCapture()
             
         } catch { fatalError("Could not initialize the Camera: \(error)") }
@@ -311,7 +153,6 @@ class MainViewController: BaseVC {
         }
     }
     
-    //
     func shootPictureButtonDidTap() {
 
 //        AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
@@ -336,7 +177,7 @@ class MainViewController: BaseVC {
             self.shootButton.isEnabled = true
         })
     }
-//
+
 //    func saveImageWithFrame() {
 //        UIGraphicsBeginImageContextWithOptions(viewWithFrame.bounds.size, false, 0)
 //        viewWithFrame.drawHierarchy(in: viewWithFrame.bounds, afterScreenUpdates: true)
@@ -346,8 +187,7 @@ class MainViewController: BaseVC {
 //        // Save photo into a custom folder in the Camera Roll
 //        savePhoto(image: imgToShare, albumName: APP_NAME, completion: nil)
 //    }
-    
-    
+
     func swicthScreenButtonDidTap() {
         playSound("button_click", ofType: "wav")
         
@@ -371,7 +211,6 @@ class MainViewController: BaseVC {
             
             resetCameraAndStartItAgain()
             
-        
         // Back Camera
         } else {
             swicthScreenButton.setBackgroundImage(UIImage(systemName: "arrow.triangle.2.circlepath.camera"), for: .normal)
@@ -388,9 +227,21 @@ class MainViewController: BaseVC {
             }
         }
     }
+    // MARK: - Initializer
+    
+    // MARK: - LifeCycle
+    override func viewDidLayoutSubviews() { layout() }
+    override func viewDidAppear(_ animated: Bool) { attribute() }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        touchEvent()
+    }
+    
+    // MARK: - Actions
     
     func filterButtonDidTap() {
-        
         do {
             sharedImageProcessingContext.runOperationSynchronously{
                 camera.stopCapture()
@@ -400,10 +251,10 @@ class MainViewController: BaseVC {
             let filterListVC = FilterListViewController()
             filterListVC.modalPresentationStyle = .fullScreen
             present(filterListVC, animated: true, completion: nil)
-        }// ./ do
+        }
     }
     
-    func shareListPhotoButton() {
+    func shareListPhotoButtonDidTap() {
         if previewImg.image != nil {
 //            playSound("button_click", ofType: "wav")
             do {
