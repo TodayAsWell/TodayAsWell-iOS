@@ -25,6 +25,9 @@ extension EditViewController {
             dismissButton
         ].forEach { view.addSubview($0) }
         
+        let width = view.frame.width / 430
+        let height = view.frame.height / 932
+        
         frameView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.width.equalToSuperview()

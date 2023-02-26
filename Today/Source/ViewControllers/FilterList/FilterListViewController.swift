@@ -63,7 +63,7 @@ extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.camNameLabel.text = camStrArray[0]
         cell.camDescriptionLabel.text = camStrArray[0]
         
-        if indexPath.row > 1 {
+        if indexPath.row > 8 {
             if !proIAPmade { cell.proLabel.isHidden = false
             } else { cell.proLabel.isHidden = true }
         }
