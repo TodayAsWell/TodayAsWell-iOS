@@ -194,5 +194,7 @@ extension HomeViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sectionName = contents[indexPath.section].sectionName
         print("TEST: \(sectionName) 섹션의 \(indexPath.row + 1)번째 콘텐츠들")
+        cameraInUse = indexPath.row
+        dismiss(animated: true)
     }
 }

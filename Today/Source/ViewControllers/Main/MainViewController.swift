@@ -248,9 +248,13 @@ class MainViewController: BaseVC {
                 camera.removeAllTargets()
             }
             
-            let filterListVC = FilterListViewController()
-            filterListVC.modalPresentationStyle = .fullScreen
-            present(filterListVC, animated: true, completion: nil)
+//            let filterListVC = FilterListViewController()
+//            filterListVC.modalPresentationStyle = .fullScreen
+//            present(filterListVC, animated: true, completion: nil)
+            let layout = UICollectionViewFlowLayout()
+            let homelayoutVC = HomeViewController(collectionViewLayout: layout)
+            homelayoutVC.modalPresentationStyle = .fullScreen
+            present(homelayoutVC, animated: true)
         }
     }
     
