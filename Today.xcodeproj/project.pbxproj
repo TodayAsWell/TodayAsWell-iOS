@@ -19,6 +19,13 @@
 		0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973B92997884E00FE8CF8 /* CameraCell.swift */; };
 		0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */; };
 		0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BD299793FF00FE8CF8 /* BaseNC.swift */; };
+		0EF9C4F629B47294000F3DD9 /* Content.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF9C4F529B47294000F3DD9 /* Content.plist */; };
+		0EF9C4F829B472AD000F3DD9 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4F729B472AD000F3DD9 /* Content.swift */; };
+		0EF9C4FA29B472BA000F3DD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */; };
+		0EF9C4FC29B472DF000F3DD9 /* ContentCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4FB29B472DF000F3DD9 /* ContentCollectionViewHeader.swift */; };
+		0EF9C4FE29B472EA000F3DD9 /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */; };
+		0EF9C50029B472F6000F3DD9 /* ContentCollectionViewMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4FF29B472F6000F3DD9 /* ContentCollectionViewMainCell.swift */; };
+		0EF9C50229B47305000F3DD9 /* ContentCollectionViewRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C50129B47305000F3DD9 /* ContentCollectionViewRankCell.swift */; };
 		2632D15B22788D100027AAB9 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 26D9AB63227747FA00403289 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		263C158E233A1F5F00675CFF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 263C158D233A1F5F00675CFF /* Launch Screen.storyboard */; };
 		264C86882285A5A200950C52 /* flash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 264C86842285A5A100950C52 /* flash.wav */; };
@@ -104,6 +111,13 @@
 		0EB973B92997884E00FE8CF8 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalViewController.swift; sourceTree = "<group>"; };
 		0EB973BD299793FF00FE8CF8 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
+		0EF9C4F529B47294000F3DD9 /* Content.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Content.plist; path = "../../../../../Downloads/Part 3/Ch6_NetflixStyle/NetflixStyleCollectionViewSampleApp 2/NetflixStyleCollectionViewSampleApp/Content.plist"; sourceTree = "<group>"; };
+		0EF9C4F729B472AD000F3DD9 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0EF9C4FB29B472DF000F3DD9 /* ContentCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewHeader.swift; sourceTree = "<group>"; };
+		0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EF9C4FF29B472F6000F3DD9 /* ContentCollectionViewMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewMainCell.swift; sourceTree = "<group>"; };
+		0EF9C50129B47305000F3DD9 /* ContentCollectionViewRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewRankCell.swift; sourceTree = "<group>"; };
 		1FAD97705683A226C7341926 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		263C158D233A1F5F00675CFF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		264C86842285A5A100950C52 /* flash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flash.wav; sourceTree = "<group>"; };
@@ -215,6 +229,7 @@
 		0EA0A548298E8ED200652588 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0EF9C4F429B47261000F3DD9 /* Test */,
 				0EA0A551298EA5F900652588 /* Base */,
 				0EA0A54F298E90D500652588 /* Additions */,
 				0EA0A54E298E8F7D00652588 /* ViewControllers */,
@@ -294,6 +309,20 @@
 				0EB973BD299793FF00FE8CF8 /* BaseNC.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		0EF9C4F429B47261000F3DD9 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				0EF9C4F529B47294000F3DD9 /* Content.plist */,
+				0EF9C4F729B472AD000F3DD9 /* Content.swift */,
+				0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */,
+				0EF9C4FB29B472DF000F3DD9 /* ContentCollectionViewHeader.swift */,
+				0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */,
+				0EF9C4FF29B472F6000F3DD9 /* ContentCollectionViewMainCell.swift */,
+				0EF9C50129B47305000F3DD9 /* ContentCollectionViewRankCell.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		2650ECCD2281AC5700FD4FA0 /* Sounds */ = {
@@ -477,6 +506,7 @@
 			files = (
 				2650ECD92281BEA300FD4FA0 /* button_click.wav in Resources */,
 				2673572822840F9A00AE565B /* Jetta_Kloots_Font.ttf in Resources */,
+				0EF9C4F629B47294000F3DD9 /* Content.plist in Resources */,
 				264C86882285A5A200950C52 /* flash.wav in Resources */,
 				2650ECCF2281AD2B00FD4FA0 /* roll_picture.wav in Resources */,
 				722FE5A719FFD91900BA05A1 /* Assets.xcassets in Resources */,
@@ -556,15 +586,21 @@
 				722FE5A019FFD91800BA05A1 /* AppDelegate.swift in Sources */,
 				0EA0A557298EA61900652588 /* BaseVC.swift in Sources */,
 				0EB973B6299784EB00FE8CF8 /* FilterListViewController.swift in Sources */,
+				0EF9C50229B47305000F3DD9 /* ContentCollectionViewRankCell.swift in Sources */,
 				0E6593F629A642600049E1AF /* FilterListViewController+Layout.swift in Sources */,
 				0EA0A540298E7EE300652588 /* Configurations.swift in Sources */,
 				2673572E2284360B00AE565B /* GPUImage.xcodeproj in Sources */,
+				0EF9C50029B472F6000F3DD9 /* ContentCollectionViewMainCell.swift in Sources */,
 				0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */,
+				0EF9C4FE29B472EA000F3DD9 /* ContentCollectionViewCell.swift in Sources */,
+				0EF9C4F829B472AD000F3DD9 /* Content.swift in Sources */,
 				0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */,
 				0E6593DF29A602540049E1AF /* EditViewController.swift in Sources */,
+				0EF9C4FA29B472BA000F3DD9 /* HomeViewController.swift in Sources */,
 				0E6593F129A6415D0049E1AF /* MainViewController+Layout.swift in Sources */,
 				0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */,
 				0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */,
+				0EF9C4FC29B472DF000F3DD9 /* ContentCollectionViewHeader.swift in Sources */,
 				0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

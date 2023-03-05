@@ -12,7 +12,6 @@ import Then
 import RxSwift
 import RxCocoa
 
-@available(iOS 13.0, *)
 class FilterListViewController: BaseVC {
     
     // MARK: - UIComponenets
@@ -45,7 +44,6 @@ class FilterListViewController: BaseVC {
     }
 }
 
-@available(iOS 13.0, *)
 extension FilterListViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - TableViewSetting
