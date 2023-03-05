@@ -9,6 +9,6 @@ public class Pixellate: BasicOperation {
     public init() {
         super.init(fragmentShader:PixellateFragmentShader, numberOfInputs:1)
         
-        ({fractionalWidthOfAPixel = 0.01})()
+        ({fractionalWidthOfAPixel = 0.02})()
     }
 }
