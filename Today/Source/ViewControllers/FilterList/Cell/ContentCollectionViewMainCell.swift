@@ -74,7 +74,7 @@ class ContentCollectionViewMainCell: UICollectionViewCell {
         }
         
         plusButton.setTitle("자동 추천", for: .normal)
-        plusButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        plusButton.setImage(UIImage(systemName: "theatermasks"), for: .normal)
         plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         
         infoButton.setTitle("정보", for: .normal)
@@ -86,8 +86,15 @@ class ContentCollectionViewMainCell: UICollectionViewCell {
         playButton.backgroundColor = .white
         playButton.layer.cornerRadius = 3
         playButton.snp.makeConstraints {
-            $0.width.equalTo(90)
-            $0.height.equalTo(30)
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                $0.width.equalTo(90.0)
+                $0.height.equalTo(30.0)
+            }
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                $0.width.equalTo(110.0)
+                $0.height.equalTo(50.0)
+            }
         }
         playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         

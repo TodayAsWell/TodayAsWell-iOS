@@ -226,8 +226,8 @@
 		0E6593F929A6447C0049E1AF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */,
 				0EF9C4FF29B472F6000F3DD9 /* ContentCollectionViewMainCell.swift */,
+				0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */,
 				0EF9C50129B47305000F3DD9 /* ContentCollectionViewRankCell.swift */,
 			);
 			path = Cell;
