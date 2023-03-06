@@ -47,35 +47,49 @@ let cameraColors = [
 
 
 // MARK: - 필터 목록
+//일반 필터
 let saturationFlt = SaturationAdjustment()
 let contrastFlt = ContrastAdjustment()
 let exposureFlt = ExposureAdjustment()
 let brightnessFlt = BrightnessAdjustment()
+//블루 오션 필터
 let whiteBalanceFlt = WhiteBalance()
 let rgbaAdjustmentFlt = RGBAdjustment()
 let blendFlt = AlphaBlend()
+// 그것이 알고 싶다 필터
 let pixelllateFlt = Pixellate()
+// 하얀색 티비 필터
 let halftoneFlt = Halftone()
+// 하얀색 체크무니 필터
 let crossHatchFlt = Crosshatch()
+//주변이 검정색인 필터
 let vignetteFlt = Vignette()
 let toonFlt = ToonFilter()
 let luminanceFlt = Luminance()
 let luminanceThresholdFlt = LuminanceThreshold()
 let colorInversionFlt = ColorInversion()
 let monochromeFlt = MonochromeFilter()
+//실패작소녀 필터
 let falseColorFlt = FalseColor()
 let hazeFlt = Haze()
 let sepiaFlt = SepiaToneFilter()
 let opacityFlt = OpacityAdjustment()
+//슈렉 필터
 let hueFlt = HueAdjustment()
+//let Avatar
 let swirlFlt = SwirlDistortion()
 let gaussianBlurFlt = GaussianBlur()
 let tiltShiftFlt = TiltShift()
 let highlightsAndShadowsFlt = HighlightsAndShadows()
 let solarizeFlt = Solarize()
+//보라색 민트색 필터
 let cgaColorspaceFlt = CGAColorspaceFilter()
+//햐얀색 테두리 검은 색 배경 필터
 let prewittEdgeDetectionFlt = PrewittEdgeDetection()
+
+//종의 필터
 let sketchFlt = SketchFilter()
+//완전 하얀색 필터
 let thresholdSketchFlt = ThresholdSketchFilter()
 let kuwaharaFlt = KuwaharaFilter()
 
