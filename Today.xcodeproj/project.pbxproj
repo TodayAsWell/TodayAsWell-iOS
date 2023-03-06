@@ -19,6 +19,7 @@
 		0EB973BA2997884E00FE8CF8 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973B92997884E00FE8CF8 /* CameraCell.swift */; };
 		0EB973BC2997925F00FE8CF8 /* ApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */; };
 		0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB973BD299793FF00FE8CF8 /* BaseNC.swift */; };
+		0EBAEEA529B5955B00A0B39E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAEEA429B5955B00A0B39E /* ViewController.swift */; };
 		0EF9C4F629B47294000F3DD9 /* Content.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF9C4F529B47294000F3DD9 /* Content.plist */; };
 		0EF9C4F829B472AD000F3DD9 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4F729B472AD000F3DD9 /* Content.swift */; };
 		0EF9C4FA29B472BA000F3DD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */; };
@@ -111,6 +112,8 @@
 		0EB973B92997884E00FE8CF8 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		0EB973BB2997925F00FE8CF8 /* ApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalViewController.swift; sourceTree = "<group>"; };
 		0EB973BD299793FF00FE8CF8 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
+		0EBAEE9D29B5905D00A0B39E /* Content.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Content.plist; sourceTree = "<group>"; };
+		0EBAEEA429B5955B00A0B39E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0EF9C4F529B47294000F3DD9 /* Content.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Content.plist; path = "../../../../../Downloads/Part 3/Ch6_NetflixStyle/NetflixStyleCollectionViewSampleApp 2/NetflixStyleCollectionViewSampleApp/Content.plist"; sourceTree = "<group>"; };
 		0EF9C4F729B472AD000F3DD9 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -211,9 +214,11 @@
 		0E6593F829A643BA0049E1AF /* FilterList */ = {
 			isa = PBXGroup;
 			children = (
+				0EBAEE9E29B5906D00A0B39E /* InfoData */,
+				0EBAEEA129B5910C00A0B39E /* Home */,
+				0EBAEEA029B590DC00A0B39E /* Header */,
 				0E6593F929A6447C0049E1AF /* Cell */,
-				0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */,
-				0E6593F529A642600049E1AF /* FilterListViewController+Layout.swift */,
+				0EBAEE9F29B590C300A0B39E /* 연습 */,
 			);
 			path = FilterList;
 			sourceTree = "<group>";
@@ -221,7 +226,9 @@
 		0E6593F929A6447C0049E1AF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0EB973B92997884E00FE8CF8 /* CameraCell.swift */,
+				0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */,
+				0EF9C4FF29B472F6000F3DD9 /* ContentCollectionViewMainCell.swift */,
+				0EF9C50129B47305000F3DD9 /* ContentCollectionViewRankCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -311,16 +318,65 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		0EBAEE9E29B5906D00A0B39E /* InfoData */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAEE9D29B5905D00A0B39E /* Content.plist */,
+				0EF9C4F729B472AD000F3DD9 /* Content.swift */,
+			);
+			path = InfoData;
+			sourceTree = "<group>";
+		};
+		0EBAEE9F29B590C300A0B39E /* 연습 */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAEEA329B5954300A0B39E /* iPad 지원 */,
+				0EBAEEA229B5953800A0B39E /* 필터 */,
+			);
+			name = "연습";
+			path = "연습";
+			sourceTree = "<group>";
+		};
+		0EBAEEA029B590DC00A0B39E /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				0EF9C4FB29B472DF000F3DD9 /* ContentCollectionViewHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		0EBAEEA129B5910C00A0B39E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0EBAEEA229B5953800A0B39E /* 필터 */ = {
+			isa = PBXGroup;
+			children = (
+				0EB973B5299784EB00FE8CF8 /* FilterListViewController.swift */,
+				0EB973B92997884E00FE8CF8 /* CameraCell.swift */,
+				0E6593F529A642600049E1AF /* FilterListViewController+Layout.swift */,
+			);
+			name = "필터";
+			path = "필터";
+			sourceTree = "<group>";
+		};
+		0EBAEEA329B5954300A0B39E /* iPad 지원 */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAEEA429B5955B00A0B39E /* ViewController.swift */,
+			);
+			name = "iPad 지원";
+			path = "iPad 지원";
+			sourceTree = "<group>";
+		};
 		0EF9C4F429B47261000F3DD9 /* Test */ = {
 			isa = PBXGroup;
 			children = (
 				0EF9C4F529B47294000F3DD9 /* Content.plist */,
-				0EF9C4F729B472AD000F3DD9 /* Content.swift */,
-				0EF9C4F929B472BA000F3DD9 /* HomeViewController.swift */,
-				0EF9C4FB29B472DF000F3DD9 /* ContentCollectionViewHeader.swift */,
-				0EF9C4FD29B472EA000F3DD9 /* ContentCollectionViewCell.swift */,
-				0EF9C4FF29B472F6000F3DD9 /* ContentCollectionViewMainCell.swift */,
-				0EF9C50129B47305000F3DD9 /* ContentCollectionViewRankCell.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -600,6 +656,7 @@
 				0E6593F129A6415D0049E1AF /* MainViewController+Layout.swift in Sources */,
 				0EB973BE299793FF00FE8CF8 /* BaseNC.swift in Sources */,
 				0EA0A53B298E6E8A00652588 /* MainViewController.swift in Sources */,
+				0EBAEEA529B5955B00A0B39E /* ViewController.swift in Sources */,
 				0EF9C4FC29B472DF000F3DD9 /* ContentCollectionViewHeader.swift in Sources */,
 				0EA0A539298E6E7A00652588 /* SceneDelegate.swift in Sources */,
 			);
@@ -723,7 +780,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "/Users/junha/Desktop/Today_iOS/Today/Resource/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jn;
@@ -749,7 +806,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "/Users/junha/Desktop/Today_iOS/Today/Resource/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jn;
