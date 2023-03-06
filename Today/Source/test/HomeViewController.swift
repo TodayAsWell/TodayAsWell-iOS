@@ -34,7 +34,18 @@ class HomeViewController: UICollectionViewController {
         //Data 설정
         contents = getContents()
         mainItem = contents.first?.contentItem.randomElement()
+        
+//        navigationSettings()
+        
     }
+    
+//    func navigationSettings() {
+//        let exitButton: UIBarButtonItem? = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(exitButtonDidTap))
+//        exitButton?.tintColor = .blue
+//        exitButton?.title = "나가기"
+//
+//        self.navigationItem.leftBarButtonItem = exitButton
+//    }
     
     ///각각의 섹션 타입에 대한 UICollectionViewLayout 생성
     private func layout() -> UICollectionViewLayout {
@@ -105,7 +116,8 @@ class HomeViewController: UICollectionViewController {
     }
     
     // 순위  표시 section layout 설정
-    private func createRankTypeSection() -> NSCollectionLayoutSection {
+    private func createRankTypeSection() ->
+    NSCollectionLayoutSection {
         //item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(0.9))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -138,6 +150,11 @@ class HomeViewController: UICollectionViewController {
               let list = try? PropertyListDecoder().decode([Content].self, from: data) else { return [] }
         return list
     }
+    
+//    @objc
+//    func exitButtonDidTap() {
+//        self.dismiss(animated: true)
+//    }
 }
 
 //MARK: UICollectionView Datasource, Delegate
