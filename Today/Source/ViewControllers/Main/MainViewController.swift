@@ -109,10 +109,28 @@ class MainViewController: BaseVC {
             switch cameraInUse {
                 
             case 0:
+                //일반 필터
                 camera --> renderView
             case 1:
+                
+                //블루 오션 필터
                 whiteBalanceFlt.temperature = 4000
                 camera --> saturationFlt --> whiteBalanceFlt --> renderView
+                
+            case 2:
+                //실패작소녀 필터
+                camera --> saturationFlt --> falseColorFlt --> renderView
+                
+            case 3:
+                //슈렉 필터
+                camera --> saturationFlt --> hueFlt --> renderView
+                
+            case 4:
+                // 그것이 알고 싶다 필터
+                camera --> saturationFlt --> pixelllateFlt --> renderView
+            
+            case 5:
+                camera --> saturationFlt --> kuwaharaFlt --> renderView
             break
             default:break
             }
