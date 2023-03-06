@@ -2,6 +2,7 @@ import UIKit
 
 // TODO: Add support for transparency
 // TODO: Deal with view resizing
+@available(iOS 12.0, *)
 public class RenderView:UIView, ImageConsumer {
     public var backgroundRenderColor = Color.white
     public var fillMode = FillMode.stretch
